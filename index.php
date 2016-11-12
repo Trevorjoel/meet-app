@@ -1,4 +1,3 @@
-Test
 <?php
 require_once('startsession.php');
 $page_title = 'Where opposites attract!';

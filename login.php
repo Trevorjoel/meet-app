@@ -1,4 +1,4 @@
-
+Test
 <?php
 
 require_once('connectvars.php');

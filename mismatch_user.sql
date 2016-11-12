@@ -10,6 +10,11 @@ CREATE TABLE `mismatch_user` (
   `city` VARCHAR(32),
   `state` VARCHAR(2),
   `picture` VARCHAR(32),
+  `email` VARCHAR(255),
+  `ip` VARCHAR(255),
+  `country` VARCHAR(255),
+  `lastlogin` DATETIME,
+  `notescheck` DATETIME
   PRIMARY KEY (`user_id`)
 );
 

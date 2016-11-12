@@ -1,1 +1,6 @@
-* connectvars.php
+
+*.log
+*.conf
+connectvars.php
+images/16-mymismatchgraph.png
+images/18-mymismatchgraph.png

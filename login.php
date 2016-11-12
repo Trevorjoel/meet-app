@@ -1,4 +1,3 @@
-Test
 <?php
 
 require_once('connectvars.php');
@@ -74,4 +73,3 @@ $error_msg = 'Sorry, you must enter your username and password to log in.';
 ?>
 </body>
  </html> 
-\ No newline at end of file

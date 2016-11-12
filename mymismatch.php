@@ -1,13 +1,6 @@
 <link rel="stylesheet" type="text/css" href="style.css" />
  <style>
-table, tr, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-tr, td {
-    padding: 5px;
-    text-align: left;
-}
+
 </style>
 <?php
   // Custom function to draw a bar graph given a data set, maximum value, and image filename

@@ -3,6 +3,7 @@
   require_once('startsession.php');
 
   // Insert the page header
+  $page_title = 'Where peace comes through understanding!';
   require_once('header.php');
 
   require_once('appvars.php');

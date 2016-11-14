@@ -107,7 +107,8 @@ require_once('header.php');
     echo '<p class="error">There was a problem accessing your profile.</p>';
   }
 
-
+  //Check matches when looking at another users profile
+if (isset($_GET['user_id']) && ($_GET['user_id'] )  !== ($_SESSION['user_id'])) {
   // Only look for a mismatch if the user has questionnaire responses stored
   $query = "SELECT * FROM mismatch_response WHERE user_id = '" . $_SESSION['user_id'] . "'";
   $data = mysqli_query($dbc, $query);
@@ -204,11 +205,12 @@ require_once('header.php');
         
       } // End of check for a single row of mismatch user results
     } // End of check for a user mismatch
-  } // End of check for any questionnaire response results
+  } // End of check for any questionnaire 
+
   else {
     echo '<p>You must first <a href="questionnaire.php">answer the questionnaire</a> before you can be mismatched.</p>';
   }
-
+}//End ofheck matches when looking at another users profile
   mysqli_close($dbc);
 ?>
 <?php 

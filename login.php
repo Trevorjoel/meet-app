@@ -1,5 +1,7 @@
 <?php
-
+$page_title = 'Where peace comes through understanding!';
+  require_once('header.php');
+  require_once('navmenu.php');
 require_once('connectvars.php');
 session_start();
 // Clear the error message

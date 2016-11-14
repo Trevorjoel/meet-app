@@ -41,7 +41,7 @@
   require_once('startsession.php');
 
   // Insert the page header
-  $page_title = 'My Mismatch';
+  $page_title = 'My match';
   require_once('header.php');
 
   require_once('appvars.php');
@@ -136,7 +136,7 @@
         echo '</td></tr></table>';
 
         // Display the mismatched topics in a table with four columns
-        echo '<h4>You are mismatched on the following ' . count($mismatch_topics) . ' topics:</h4><br>';
+        echo '<h4>You feel the same about the following ' . count($mismatch_topics) . ' topics:</h4><br>';
         echo '<table ><tr>';
         $i = 0;
         foreach ($mismatch_topics as $topic) {

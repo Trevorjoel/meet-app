@@ -1,24 +1,44 @@
 <?php
+ /* Latest Info:
+
+
+
+
+  */
+
   // Insert the page header
   $page_title = 'Sign Up';
   require_once('header.php');
-
   require_once('appvars.php');
   require_once('connectvars.php');
-
-  // Connect to the database
+ 
+  // Have a D&M with the database
   $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
   if (isset($_POST['submit'])) {
-    // Grab the profile data from the POST
-    $username = mysqli_real_escape_string($dbc, trim($_POST['username']));
+     // Grab the profile data from the POST 'by the pussy' sanitize and validate that shizzle
+    if(empty($_POST['nationality'])) {
+      echo '<p class="error">You must enter nationality.</p>';
+    }else{
+
+
+   
     $nationality = mysqli_real_escape_string($dbc, trim($_POST['nationality']));
+    $username = mysqli_real_escape_string($dbc, trim($_POST['username']));
+    
     $email = mysqli_real_escape_string($dbc, trim($_POST['email']));
     $password1 = mysqli_real_escape_string($dbc, trim($_POST['password1']));
     $password2 = mysqli_real_escape_string($dbc, trim($_POST['password2']));
 
+      filter_input ( INPUT_POST, $_POST['email'], FILTER_SANITIZE_EMAIL );
+    $email = mysqli_real_escape_string ($dbc, trim($_POST['email']));
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo  "<br><p class='error'>$email is not a valid email address. <br>";
+        $email = '';
+}
     if (!empty($username) && !empty($password1) && !empty($password2) && !empty($email) && !empty($nationality) && ($password1 == $password2)) {
-      // Make sure someone isn't already registered using this username
+      // Make sure username is unique
       $query = "SELECT * FROM mismatch_user WHERE username = '$username'";
       $data = mysqli_query($dbc, $query);
       if (mysqli_num_rows($data) == 0) {
@@ -40,10 +60,11 @@
       }
     }
     else {
+
       echo '<p class="error">You must enter all of the sign-up data, including the desired password twice.</p>';
     }
   }
-
+}
   mysqli_close($dbc);
 ?>
 
@@ -54,9 +75,12 @@
 <hr>
 <fieldset>
 <p><b>I am :</b><br>
-<input type="radio" name="nationality" id="" value="1" />
+<input type="radio" name="nationality" id="" value="1"<?php if (isset($_POST['nationality']) and $_POST['nationality'] == '1') 
+  echo 'checked';?> />
+
 <label for="russian"> Russian</label><br/>
-<input type="radio" name="nationality" id="" value="2"/>
+<input type="radio" name="nationality" id="" value="2" <?php if (isset($_POST['nationality']) and $_POST['nationality'] == '2') 
+  echo 'checked';?>/>
 <label for="non-russian"> Non-Russian</label><br/>
 </p>
 </fieldset>
@@ -64,7 +88,7 @@
       <br /><label for="username">Username:</label>
       <input type="text" id="username" name="username" value="<?php if (!empty($username)) echo $username; ?>" /><br />
      <label for="email">Email Address:</label>
-    <input id="email" type="text" name="email" maxlength="88"><br />
+    <input id="email" type="text" name="email" maxlength="88" value="<?php if (!empty($email)) echo $email; ?>"><br />
       <label for="password1">Password:</label>
       <input type="password" id="password1" name="password1" /><br />
       <label for="password2">Password (retype):</label>

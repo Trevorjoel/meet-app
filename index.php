@@ -24,10 +24,10 @@
   echo '<table>';
   while ($row = mysqli_fetch_array($data)) {
     if (is_file(MM_UPLOADPATH . $row['picture']) && filesize(MM_UPLOADPATH . $row['picture']) > 0) {
-      echo '<tr><td><img src="' . MM_UPLOADPATH . $row['picture'] . '" alt="' . $row['first_name'] . '" /></td></tr>';
+      echo '<tr><td><img class="img-circle" src="' . MM_UPLOADPATH . $row['picture'] . '" alt="' . $row['first_name'] . '" /></td></tr>';
     }
     else {
-      echo '<tr><td><img src="' . MM_UPLOADPATH . 'nopic.jpg' . '" alt="' . $row['first_name'] . '" /></td></tr>';
+      echo '<tr><td><img class="img-circle" src="' . MM_UPLOADPATH . 'nopic.jpg' . '" alt="' . $row['first_name'] . '" /></td></tr>';
     }
     if (isset($_SESSION['user_id'])) {
       echo '<td><a href="viewprofile.php?user_id=' . $row['user_id'] . '">' . $row['first_name'] . '</a></td></tr>';

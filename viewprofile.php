@@ -1,43 +1,11 @@
  <?php
- // Custom function to draw a bar graph given a data set, maximum value, and image filename
-  function draw_bar_graph($width, $height, $data, $max_value, $filename) {
-    // Create the empty graph image
-    $img = imagecreatetruecolor($width, $height);
 
-    // Set a white background with black text and gray graphics
-    $bg_color = imagecolorallocate($img, 255, 255, 255);       // white
-    $text_color = imagecolorallocate($img, 255, 255, 255);     // white
-    $bar_color = imagecolorallocate($img, 0, 0, 0);            // black
-    $border_color = imagecolorallocate($img, 192, 192, 192);   // light gray
-
-    // Fill the background
-    imagefilledrectangle($img, 0, 0, $width, $height, $bg_color);
-    // Draw the bars
-    $bar_width = $width / ((count($data) * 2) + 1);
-    for ($i = 0; $i < count($data); $i++) {
-      imagefilledrectangle($img, ($i * $bar_width * 2) + $bar_width, $height,
-        ($i * $bar_width * 2) + ($bar_width * 2), $height - (($height / $max_value) * $data[$i][1]), $bar_color);
-      imagestringup($img, 5, ($i * $bar_width * 2) + ($bar_width), $height - 5, $data[$i][0], $text_color);
-    }
-
-    // Draw a rectangle around the whole thing
-    imagerectangle($img, 0, 0, $width - 1, $height - 1, $border_color);
-
-    // Draw the range up the left side of the graph
-    for ($i = 1; $i <= $max_value; $i++) {
-      imagestring($img, 5, 0, $height - ($i * ($height / $max_value)), $i, $bar_color);
-    }
-
-    // Write the graph image to a file
-    imagepng($img, $filename, 5);
-    imagedestroy($img);
-  } // End of draw_bar_graph() function
 require_once('startsession.php');
 $page_title = 'View profile';
 require_once('header.php');
   require_once('appvars.php');
   require_once('connectvars.php');
-  
+  require_once('php_functions.php');
   require_once('navmenu.php');
   ?>
   
@@ -107,7 +75,7 @@ require_once('header.php');
     echo '<p class="error">There was a problem accessing your profile.</p>';
   }
 
-  //Check matches when looking at another users profile
+  //Check matches ONLY when looking at another users profile
 if (isset($_GET['user_id']) && ($_GET['user_id'] )  !== ($_SESSION['user_id'])) {
   // Only look for a mismatch if the user has questionnaire responses stored
   $query = "SELECT * FROM mismatch_response WHERE user_id = '" . $_SESSION['user_id'] . "'";

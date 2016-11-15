@@ -1,41 +1,5 @@
 <link rel="stylesheet" type="text/css" href="style.css" />
- <style>
-
-</style>
 <?php
-  // Custom function to draw a bar graph given a data set, maximum value, and image filename
-  function draw_bar_graph($width, $height, $data, $max_value, $filename) {
-    // Create the empty graph image
-    $img = imagecreatetruecolor($width, $height);
-
-    // Set a white background with black text and gray graphics
-    $bg_color = imagecolorallocate($img, 255, 255, 255);       // white
-    $text_color = imagecolorallocate($img, 255, 255, 255);     // white
-    $bar_color = imagecolorallocate($img, 0, 0, 0);            // black
-    $border_color = imagecolorallocate($img, 192, 192, 192);   // light gray
-
-    // Fill the background
-    imagefilledrectangle($img, 0, 0, $width, $height, $bg_color);
-    // Draw the bars
-    $bar_width = $width / ((count($data) * 2) + 1);
-    for ($i = 0; $i < count($data); $i++) {
-      imagefilledrectangle($img, ($i * $bar_width * 2) + $bar_width, $height,
-        ($i * $bar_width * 2) + ($bar_width * 2), $height - (($height / $max_value) * $data[$i][1]), $bar_color);
-      imagestringup($img, 5, ($i * $bar_width * 2) + ($bar_width), $height - 5, $data[$i][0], $text_color);
-    }
-
-    // Draw a rectangle around the whole thing
-    imagerectangle($img, 0, 0, $width - 1, $height - 1, $border_color);
-
-    // Draw the range up the left side of the graph
-    for ($i = 1; $i <= $max_value; $i++) {
-      imagestring($img, 5, 0, $height - ($i * ($height / $max_value)), $i, $bar_color);
-    }
-
-    // Write the graph image to a file
-    imagepng($img, $filename, 5);
-    imagedestroy($img);
-  } // End of draw_bar_graph() function
 
   // Start the session
   require_once('startsession.php');
@@ -46,6 +10,7 @@
 
   require_once('appvars.php');
   require_once('connectvars.php');
+  require_once('php_functions.php');
 
   // Make sure the user is logged in before going any further.
   if (!isset($_SESSION['user_id'])) {
@@ -115,12 +80,12 @@
       }
     } // End of outer while loop
 
-    // Make sure a mismatch was found
+    // Make sure a match was found
     if ($mismatch_user_id != -1) {
       $query = "SELECT username, first_name, last_name, city, state, picture FROM mismatch_user WHERE user_id = '$mismatch_user_id'";
       $data = mysqli_query($dbc, $query);
       if (mysqli_num_rows($data) == 1) {
-        // The user row for the mismatch was found, so display the user data
+        // The user row for the match was found, so display the user data
         $row = mysqli_fetch_array($data);
         echo '<table><tr><td class="">';
         if (!empty($row['first_name']) && !empty($row['last_name'])) {
@@ -129,25 +94,13 @@
         if (!empty($row['city']) && !empty($row['state'])) {
           echo $row['city'] . ', ' . $row['state'] . '<br />';
         }
-        echo '</td><td>';
+        echo '';
         if (!empty($row['picture'])) {
-          echo '<img src="' . MM_UPLOADPATH . $row['picture'] . '" alt="Profile Picture" /><br />';
+          echo '<img src="' . MM_UPLOADPATH . $row['picture'] . '" alt="Profile Picture" />';
         }
-        echo '</td></tr></table>';
 
-        // Display the mismatched topics in a table with four columns
-        echo '<h4>You feel the same about the following ' . count($mismatch_topics) . ' topics:</h4><br>';
-        echo '<table ><tr>';
-        $i = 0;
-        foreach ($mismatch_topics as $topic) {
-          echo '<td>' . $topic . '</td>';
-          if (++$i > 3) {
-            echo '</tr><tr>';
-            $i = 0;
-          }
-        }
-        echo '</tr></table><br>';
-
+        
+        //Begin bargraph
         // Calculate the mismatched category totals
        
         $category_totals = array(array($mismatch_categories[0], 0));
@@ -163,7 +116,24 @@
         // Generate and display the mismatched category bar graph image
         echo '<h4>Mismatched category breakdown:</h4>';
         draw_bar_graph(480, 240, $category_totals, 5, MM_UPLOADPATH . $_SESSION['user_id'] . '-mymismatchgraph.png');
-        echo '<img src="' . MM_UPLOADPATH . $_SESSION['user_id'] . '-mymismatchgraph.png" alt="Mismatch category graph" /><br />';
+        echo '<img src="' . MM_UPLOADPATH . $_SESSION['user_id'] . '-mymismatchgraph.png" alt="Mismatch category graph" />';
+echo '</td></tr></table>';
+        //end bar graph
+
+        // Display the matched topics in a table with four columns
+        echo '<h4>You feel the same about the following ' . count($mismatch_topics) . ' topics:</h4>';
+        echo '<table ><tr>';
+        $i = 0;
+        foreach ($mismatch_topics as $topic) {
+          echo '<td>' . $topic . '</td>';
+          if (++$i > 3) {
+            echo '</tr><tr>';
+            $i = 0;
+          }
+        }
+        echo '</tr></table><br>';
+
+        
 
         // Display a link to the mismatch user's profile
         echo '<h4>View <a href=viewprofile.php?user_id=' . $mismatch_user_id . '>' . $row['first_name'] . '\'s profile</a>.</h4>';

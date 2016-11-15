@@ -5,7 +5,7 @@ if (isset($_SESSION['username'])) {
  echo '&#10084<a href="index.php"> Home</a>  ';
   echo '&#10084; <a href="viewprofile.php"> View Profile</a> ';
   
-  echo '&#10084; <a href="mymismatch.php"> My mismatch</a> ';
+  echo '&#10084; <a href="mymismatch.php"> My best match</a> ';
   echo ' &#10084; <a href="editprofile.php"> Edit Profile</a> ';
    echo '&#10084;<a href="questionnaire.php"> Questionnaire</a>  ';
   echo '&#10084; <a href="Logout.php"> log out (' . $_SESSION['username'] . ')</a>';

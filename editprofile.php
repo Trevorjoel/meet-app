@@ -30,8 +30,7 @@ require_once('header.php');
     $last_name = mysqli_real_escape_string($dbc, trim($_POST['lastname']));
     $gender = mysqli_real_escape_string($dbc, trim($_POST['gender']));
     $birthdate = mysqli_real_escape_string($dbc, trim($_POST['birthdate']));
-    $city = mysqli_real_escape_string($dbc, trim($_POST['city']));
-    $state = mysqli_real_escape_string($dbc, trim($_POST['state']));
+    
     $old_picture = mysqli_real_escape_string($dbc, trim($_POST['old_picture']));
     $new_picture = mysqli_real_escape_string($dbc, trim($_FILES['new_picture']['name']));
     $new_picture_type = $_FILES['new_picture']['type'];
@@ -52,9 +51,34 @@ list($new_picture_width, $new_picture_height) = getimagesize($_FILES['new_pictur
           // Move the file to the target upload folder
           $target = MM_UPLOADPATH . basename($new_picture);
           if (move_uploaded_file($_FILES['new_picture']['tmp_name'], $target)) {
+
+
             // The new picture file move was successful, now make sure any old picture is deleted
             if (!empty($old_picture) && ($old_picture != $new_picture)) {
               @unlink(MM_UPLOADPATH . $old_picture);
+// ----------- End Universal Image Resizing Function -----------
+
+               require_once('php_functions.php');
+
+$fileName = $_FILES["new_picture"]["name"];
+               $kaboom = explode(".", $target);
+      $fileExt = ($kaboom)[1];
+       
+$target_file = "images/$fileName";
+$resized_file = "images/resized_$fileName";
+
+$wmax = 150;
+$hmax = 112;
+img_resize ($target_file, $resized_file, $wmax, $hmax, $fileExt);
+            
+               
+// ----------- End Universal Image Resizing Function -----------
+ if (!empty($fileName)) {
+              @unlink( MM_UPLOADPATH . $fileName);
+}else{
+  echo "couldnt delete file";
+}
+
             }
           }
           else {
@@ -72,19 +96,21 @@ list($new_picture_width, $new_picture_height) = getimagesize($_FILES['new_pictur
         echo '<p class="error">Your picture must be a GIF, JPEG, or PNG image file no greater than ' . (MM_MAXFILESIZE / 1024) .
           ' KB and ' . MM_MAXIMGWIDTH . 'x' . MM_MAXIMGHEIGHT . ' pixels in size.</p>';
       }
+      
     }
 
     // Update the profile data in the database
     if (!$error) {
+
       if (!empty($first_name) && !empty($last_name) && !empty($gender) && !empty($birthdate)) {
         // Only set the picture column if there is a new picture
         if (!empty($new_picture)) {
           $query = "UPDATE mismatch_user SET first_name = '$first_name', last_name = '$last_name', gender = '$gender', " .
-            " birthdate = '$birthdate', city = '$city', state = '$state', picture = '$new_picture' WHERE user_id = '" . $_SESSION['user_id'] . "'";
+            " birthdate = '$birthdate', picture = 'resized_$new_picture' WHERE user_id = '" . $_SESSION['user_id'] . "'";
         }
         else {
           $query = "UPDATE mismatch_user SET first_name = '$first_name', last_name = '$last_name', gender = '$gender', " .
-            " birthdate = '$birthdate', city = '$city', state = '$state' WHERE user_id = '" . $_SESSION['user_id'] . "'";
+            " birthdate = '$birthdate' WHERE user_id = '" . $_SESSION['user_id'] . "'";
         }
         mysqli_query($dbc, $query);
 
@@ -126,7 +152,15 @@ list($new_picture_width, $new_picture_height) = getimagesize($_FILES['new_pictur
   <form enctype="multipart/form-data" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
     <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MM_MAXFILESIZE; ?>" />
     <fieldset>
-      <legend>Personal Information</legend>
+      <legend>Personal Information</legend><br>
+
+      <input type="hidden" name="old_picture" value="<?php if (!empty($old_picture)) echo $old_picture; ?>" />
+      <label for="new_picture">Picture:</label>
+      <?php if (!empty($old_picture)) {
+        echo '<br /><img class="img-circle" src="' . MM_UPLOADPATH . $old_picture . '" alt="Profile Picture" />';
+      }
+        } ?>
+      <input type="file" id="new_picture" name="new_picture" /><br />
       <label for="firstname">First name:</label>
       <input type="text" id="firstname" name="firstname" value="<?php if (!empty($first_name)) echo $first_name; ?>" /><br />
       <label for="lastname">Last name:</label>
@@ -403,16 +437,12 @@ list($new_picture_width, $new_picture_height) = getimagesize($_FILES['new_pictur
 <label for="non-russian"> Non-Russian</label><br/>
 </p>
 </fieldset>
-      <input type="hidden" name="old_picture" value="<?php if (!empty($old_picture)) echo $old_picture; ?>" />
-      <label for="new_picture">Picture:</label>
-      <input type="file" id="new_picture" name="new_picture" />
-      <?php if (!empty($old_picture)) {
-        echo '<img class="img-circle" src="' . MM_UPLOADPATH . $old_picture . '" alt="Profile Picture" />';
-      }
-        } ?>
+      
+      
     </fieldset>
     <input type="submit" value="Save Profile" name="submit" />
   </form>
 <?php
 require_once('footer.php');
+
 ?>

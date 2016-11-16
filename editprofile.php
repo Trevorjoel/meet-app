@@ -56,7 +56,7 @@ list($new_picture_width, $new_picture_height) = getimagesize($_FILES['new_pictur
             // The new picture file move was successful, now make sure any old picture is deleted
             if (!empty($old_picture) && ($old_picture != $new_picture)) {
               @unlink(MM_UPLOADPATH . $old_picture);
-// ----------- End Universal Image Resizing Function -----------
+// ----------- Universal Image Resizing Function -----------
 
                require_once('php_functions.php');
 

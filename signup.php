@@ -74,7 +74,7 @@
       <legend>Registration Info</legend><br />     
 <hr>
 <fieldset>
-<p><b>I am :</b><br>
+<p><b>Nationality :</b><br>
 <input type="radio" name="nationality" id="" value="1"<?php if (isset($_POST['nationality']) and $_POST['nationality'] == '1') 
   echo 'checked';?> />
 

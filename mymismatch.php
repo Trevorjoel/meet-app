@@ -96,7 +96,7 @@
         }
         echo '';
         if (!empty($row['picture'])) {
-          echo '<img src="' . MM_UPLOADPATH . $row['picture'] . '" alt="Profile Picture" />';
+          echo '<img src="' . 'MM_UPLOADPATH' . $row['picture'] . '" alt="Profile Picture" />';
         }
 
         
@@ -115,8 +115,8 @@
 
         // Generate and display the mismatched category bar graph image
         echo '<h4>Mismatched category breakdown:</h4>';
-        draw_bar_graph(480, 240, $category_totals, 5, MM_UPLOADPATH . $_SESSION['user_id'] . '-mymismatchgraph.png');
-        echo '<img src="' . MM_UPLOADPATH . $_SESSION['user_id'] . '-mymismatchgraph.png" alt="Mismatch category graph" />';
+        draw_bar_graph(480, 240, $category_totals, 5, 'MM_UPLOADPATH' . $_SESSION['user_id'] . '-mymismatchgraph.png');
+        echo '<img src="' . 'MM_UPLOADPATH' . $_SESSION['user_id'] . '-mymismatchgraph.png" alt="Mismatch category graph" />';
 echo '</td></tr></table>';
         //end bar graph
 

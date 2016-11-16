@@ -1,4 +1,8 @@
 <?php
+/* About this file:
+Needs e-mail confirmation sign up.
+
+*/
 $page_title = 'Where peace comes through understanding!';
   require_once('header.php');
   require_once('navmenu.php');

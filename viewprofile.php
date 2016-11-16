@@ -67,9 +67,7 @@ require_once('header.php');
         '" class="img-circle" alt="Profile Picture" /></td></tr>';
     }
     echo '</table>';
-    if (!isset($_GET['user_id']) || ($_SESSION['user_id'] == $_GET['user_id'])) {
-      echo '<p>Would you like to <a href="editprofile.php">edit your profile</a>?</p>';
-    }
+   
   } // End of check for a single row of user results
   else {
     echo '<p class="error">There was a problem accessing your profile.</p>';
@@ -91,7 +89,104 @@ if (isset($_GET['user_id']) && ($_GET['user_id'] )  !== ($_SESSION['user_id'])) 
     $user_responses = array();
     while ($row = mysqli_fetch_array($data)) {
       array_push($user_responses, $row);
+    $isOwner = "yes";
+    $isFriend = "false";
+$ownerBlockViewer = "false";
+$viewerBlockOwner = "false";
+$viewer = $_SESSION['user_id'];
+   $viewed = $_GET['user_id'];
+$friend_check = "SELECT id FROM friends WHERE user1='$viewer' AND user2='$viewed' AND accepted='1' LIMIT 1";
     }
+   if(mysqli_num_rows(mysqli_query($dbc, $friend_check)) > 0){
+        $isFriend = true;
+    }
+    $block_check1 = "SELECT id FROM blockedusers WHERE blocker='$viewer' AND blockee='$viewed' LIMIT 1";
+  if(mysqli_num_rows(mysqli_query($dbc, $block_check1)) > 0){
+        $ownerBlockViewer = true;
+    }
+     
+    $block_check2 = "SELECT id FROM blockedusers WHERE blocker='$viewed' AND blockee='$viewer' LIMIT 1";
+  if(mysqli_num_rows(mysqli_query($dbc, $block_check2)) > 0){
+        $viewerBlockOwner = true;
+    }
+
+$friend_button = '<button disabled>Request As Friend</button>';
+$block_button = '<button disabled>Block User</button>';
+
+// LOGIC FOR FRIEND BUTTON
+if($isFriend == true){
+  $friend_button = '<button onclick="friendToggle(\'unfriend\',\''.$viewed.'\',\'friendBtn\')">Unfriend</button>';
+} else if($viewer == true && $viewed != $viewed && $ownerBlockViewer == false){
+  $friend_button = '<button onclick="friendToggle(\'friend\',\''.$viewed.'\',\'friendBtn\')">Request As Friend</button>';
+}
+// LOGIC FOR BLOCK BUTTON
+if($viewerBlockOwner == true){
+  $block_button = '<button onclick="blockToggle(\'unblock\',\''.$viewer.'\',\'blockBtn\')">Unblock User</button>';
+} else if($viewed == true && $viewer != $viewed){
+  $block_button = '<button onclick="blockToggle(\'block\',\''.$viewer.'\',\'blockBtn\')">Block User</button>';
+}
+echo ($ownerBlockViewer);
+    echo "viewed $viewed"; 
+    print "viewer $viewer";
+?>
+<!-- 
+<script src="js/ajax.js"></script>
+-->
+
+<script src="js/main.js"></script>
+<!-- 
+<script type="text/javascript">
+
+function friendToggle(type,user,elem){
+  var conf = confirm("Press OK to confirm the '"+type+"' action for user <?php echo $viewer; ?>.");
+  if(conf != true){
+    return false;
+  }
+  _(elem).innerHTML = 'please wait ...';
+  var ajax = ajaxObj("POST", "php_parsers/friend_system.php");
+  ajax.onreadystatechange = function() {
+    if(ajaxReturn(ajax) == true) {
+      if(ajax.responseText == "friend_request_sent"){
+        _(elem).innerHTML = 'OK Friend Request Sent';
+      } else if(ajax.responseText == "unfriend_ok"){
+        _(elem).innerHTML = '<button onclick="friendToggle(\'friend\',\'<?php echo $viewer; ?>\',\'friendBtn\')">Request As Friend</button>';
+      } else {
+        alert(ajax.responseText);
+        _(elem).innerHTML = 'Try again later';
+      }
+    }
+  }
+  ajax.send("type="+type+"&user="+user);
+}
+function blockToggle(type,blockee,elem){
+  var conf = confirm("Press OK to confirm the '"+type+"' action on user <?php echo $viewer; ?>.");
+  if(conf != true){
+    return false;
+  }
+  var elem = document.getElementById(elem);
+  elem.innerHTML = 'please wait ...';
+  var ajax = ajaxObj("POST", "php_parsers/block_system.php");
+  ajax.onreadystatechange = function() {
+    if(ajaxReturn(ajax) == true) {
+      if(ajax.responseText == "blocked_ok"){
+        elem.innerHTML = '<button onclick="blockToggle(\'unblock\',\'<?php echo $viewer; ?>\',\'blockBtn\')">Unblock User</button>';
+      } else if(ajax.responseText == "unblocked_ok"){
+        elem.innerHTML = '<button onclick="blockToggle(\'block\',\'<?php echo $viewer; ?>\',\'blockBtn\')">Block User</button>';
+      } else {
+        alert(ajax.responseText);
+        elem.innerHTML = 'Try again later';
+      }
+    }
+  }
+  ajax.send("type="+type+"&blockee="+blockee);
+}
+-->
+<hr />
+  <p>Friend Button: <span id="friendBtn"><?php echo $friend_button; ?></span></p>
+  <p>Block Button: <span id="blockBtn"><?php echo $block_button; ?></span></p>
+ 
+
+<?php
 
     // Initialize the mismatch search results
     $mismatch_score = 0;

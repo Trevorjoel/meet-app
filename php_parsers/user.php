@@ -87,7 +87,7 @@ if($viewerBlockOwner == true){
 <script src="js/ajax.js"></script>
 <script type="text/javascript">
 function friendToggle(type,user,elem){
-  var conf = confirm("Press OK to confirm the '"+type+"' action for user <?php echo $u; ?>.");
+  var conf = confirm("Press OK to confirm the '"+type+"' action for user <?php echo $viewed; ?>.");
   if(conf != true){
     return false;
   }
@@ -142,9 +142,7 @@ function blockToggle(type,blockee,elem){
   <p>Join Date: <?php echo $joindate; ?></p>
   <p>Last Session: <?php echo $lastsession; ?></p>
   <hr />
-  <p>Friend Button: <span id="friendBtn"><?php echo $friend_button; ?></span></p>
-  <p>Block Button: <span id="blockBtn"><?php echo $block_button; ?></span></p>
-</div>
+  
 <?php include_once("template_pageBottom.php"); ?>
 </body>
 </html>

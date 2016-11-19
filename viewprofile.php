@@ -127,16 +127,70 @@ if($viewerBlockOwner == 1){
 } else if ($viewed != $viewer){
   $block_button = '<button onclick="blockToggle(\'block\',\''.$viewed.'\',\'blockBtn\')">Block User</button>';
 }
-/*
+?>
+
+<p>Friend Button: <span id="friendBtn"><?php echo $friend_button; ?></span></p>
+  <p>Block Button: <span id="blockBtn"><?php echo $block_button; ?></span></p>
+
+<script type="text/javascript">
+/* 
+function friendToggle(type,user,elem){
+  var conf = confirm("Press OK to confirm the '"+type+"' action for user <?php echo $viewer; ?>.");
+  if(conf != true){
+    return false;
+  }
+  _(elem).innerHTML = 'please wait ...';
+  var ajax = ajaxObj("POST", "php_parsers/friend_system.php");
+  ajax.onreadystatechange = function() {
+    if(ajaxReturn(ajax) == true) {
+      if(ajax.responseText == "friend_request_sent"){
+        _(elem).innerHTML = 'OK Friend Request Sent';
+      } else if(ajax.responseText == "unfriend_ok"){
+        _(elem).innerHTML = '<button onclick="friendToggle(\'friend\',\'<?php echo $viewer; ?>\',\'friendBtn\')">Request As Friend</button>';
+      } else {
+        alert(ajax.responseText);
+        _(elem).innerHTML = 'Try again later';
+      }
+    }
+  }
+  ajax.send("type="+type+"&user="+user);
+}
+*/
+function blockToggle(type,blockee,elem){
+  var conf = confirm("Press OK to confirm the '"+type+"' action on user <?php echo $viewer; ?>.");
+  if(conf != true){
+    return false;
+  }
+  var elem = document.getElementById(elem);
+  elem.innerHTML = 'please wait ...';
+  var ajax = ajaxObj("POST", "php_parsers/block_system.php");
+  ajax.onreadystatechange = function() {
+    if(ajaxReturn(ajax) == true) {
+      if(ajax.responseText == "blocked_ok"){
+        elem.innerHTML = '<button onclick="blockToggle(\'unblock\',\'<?php echo $viewer; ?>\',\'blockBtn\')">Unblock User</button>';
+      } else if(ajax.responseText == "unblocked_ok"){
+        elem.innerHTML = '<button onclick="blockToggle(\'block\',\'<?php echo $viewer; ?>\',\'blockBtn\')">Block User</button>';
+      } else {
+        alert(ajax.responseText);
+        elem.innerHTML = 'Try again later';
+      }
+    }
+  }
+  ajax.send("type="+type+"&blockee="+blockee);
+}
+</script>
+<!--
  print "Viewer block owner: $viewerBlockOwner<br>";
 print "owner block viewer: $ownerBlockViewer<br>";
 
     echo "viewed:: $viewed<br>"; 
     print "viewer:: $viewer"; 
-*/
-?>
-<p>Friend Button: <span id="friendBtn"><?php echo $friend_button; ?></span></p>
-  <p>Block Button: <span id="blockBtn"><?php echo $block_button; ?></span></p>
+-->
+
+
+
+  
+
 <?php
 
 

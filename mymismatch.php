@@ -10,7 +10,7 @@
 
   require_once('appvars.php');
   require_once('connectvars.php');
-  require_once('php_functions.php');
+  
 
   // Make sure the user is logged in before going any further.
   if (!isset($_SESSION['user_id'])) {
@@ -96,7 +96,7 @@
         }
         echo '';
         if (!empty($row['picture'])) {
-          echo '<img src="' . 'MM_UPLOADPATH' . $row['picture'] . '" alt="Profile Picture" />';
+          echo '<img src="' . MM_UPLOADPATH . $row['picture'] . '" alt="Profile Picture" />';
         }
 
         
@@ -115,7 +115,7 @@
 
         // Generate and display the mismatched category bar graph image
         echo '<h4>Mismatched category breakdown:</h4>';
-        draw_bar_graph(480, 240, $category_totals, 5, 'MM_UPLOADPATH' . $_SESSION['user_id'] . '-mymismatchgraph.png');
+        //draw_bar_graph(480, 240, $category_totals, 5, 'MM_UPLOADPATH' . $_SESSION['user_id'] . '-mymismatchgraph.png');
         echo '<img src="' . 'MM_UPLOADPATH' . $_SESSION['user_id'] . '-mymismatchgraph.png" alt="Mismatch category graph" />';
 echo '</td></tr></table>';
         //end bar graph
@@ -141,7 +141,7 @@ echo '</td></tr></table>';
     } // End of check for a user mismatch
   } // End of check for any questionnaire response results
   else {
-    echo '<p>You must first <a href="questionnaire.php">answer the questionnaire</a> before you can be mismatched.</p>';
+    echo '<p>You must first <a href="questionnaire.php">answer the quetionnaire</a> before you can be mismatched.</p>';
   }
 
   mysqli_close($dbc);

@@ -1,8 +1,11 @@
 <?php
-require_once('startsession.php');
-if (isset($_POST['type']) && isset($_POST['user_id'])){
-  $user = preg_replace('#[^a-z0-9]#i', '', $_POST['user_id']);
-  $sql = "SELECT COUNT(id) FROM mismatch_user WHERE username='$user' AND activated='1' LIMIT 1";
+include_once("../startsession.php");
+include_once("../connectvars.php");
+if (isset($_POST['type']) && isset($_POST['user'])){
+  $viewer = $_SESSION['user_id'];
+  $user = preg_replace('#[^a-z0-9]#i', '', $_POST['user']);
+  $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+  $sql = "SELECT (user_id) FROM mismatch_user WHERE user_id='$user' AND activated='1' LIMIT 1";
   $query = mysqli_query($dbc, $sql);
   $exist_count = mysqli_fetch_row($query);
   if($exist_count[0] < 1){
@@ -11,7 +14,7 @@ if (isset($_POST['type']) && isset($_POST['user_id'])){
     exit();
   }
   if($_POST['type'] == "friend"){
-    $sql = "SELECT COUNT(id) FROM friends WHERE user1='$user' AND accepted='1' OR user2='$user' AND accepted='1'";
+    $sql = "SELECT COUNT(id) FROM friends WHERE user1='$user' AND accepted='1' OR user2='$user' AND accepted='0'";
     $query = mysqli_query($dbc, $sql);
     $friend_count = mysqli_fetch_row($query);
     $sql = "SELECT COUNT(id) FROM blockedusers WHERE blocker='$user' AND blockee='$viewer' LIMIT 1";
@@ -20,7 +23,7 @@ if (isset($_POST['type']) && isset($_POST['user_id'])){
     $sql = "SELECT COUNT(id) FROM blockedusers WHERE blocker='$viewer' AND blockee='$user' LIMIT 1";
     $query = mysqli_query($dbc, $sql);
     $blockcount2 = mysqli_fetch_row($query);
-    $sql = "SELECT COUNT(id) FROM friends WHviewer' AND user2='$user' AND accepted='1' LIMIT 1";
+    $sql = "SELECT COUNT(id) FROM friends WHERE user1='$viewer' AND user2='$user' AND accepted='1' LIMIT 1";
     $query = mysqli_query($dbc, $sql);
     $row_count1 = mysqli_fetch_row($query);
     $sql = "SELECT COUNT(id) FROM friends WHERE user1='$user' AND user2='$viewer' AND accepted='1' LIMIT 1";

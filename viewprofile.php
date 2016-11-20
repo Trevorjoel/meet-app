@@ -109,17 +109,21 @@ $friend_check = "SELECT id FROM friends WHERE user1='$viewer' AND user2='$viewed
     }
     
 
- $friend_button = '<button >Request As Friend</button>';
-$block_button = '<button >Block User</button>';
+ $friend_button = '<button disabled>Request As Friend</button>';
+
  
 // LOGIC FOR FRIEND BUTTON
 $isOwner = ($_GET['user_id']) == ($_SESSION['user_id']) ;
   
   if($isFriend == 1){
   $friend_button = '<button onclick="friendToggle(\'unfriend\',\''.$viewed.'\',\'friendBtn\')">Unfriend</button>';
-} else if($viewed != $viewer && $ownerBlockViewer == 1){
-  $friend_button = '<button onclick="friendToggle(\'friend\',\''.$viewed.'\',\'friendBtn\'fu)">Request As Friend</button>';
+} else{ 
+  $friend_button = '<button onclick="friendToggle(\'friend\',\''.$viewer.'\',\'friendBtn\')">Request As Friend</button>';
+
+  //'<button onclick="friendToggle(\'friend\',\''.$viewed.'\',\'friendBtn\'fu)">Request As Friend</button>';
 }
+
+print_r($ownerBlockViewer);
 
 // LOGIC FOR BLOCK BUTTON
 if($viewerBlockOwner == 1){
@@ -132,11 +136,11 @@ if($viewerBlockOwner == 1){
 <p>Friend Button: <span id="friendBtn"><?php echo $friend_button; ?></span></p>
   <p>Block Button: <span id="blockBtn"><?php echo $block_button; ?></span></p>
 
-<script src="js/ajax.js"></script>
+
 <script type="text/javascript">
 
 get_id ("Div1") .innerHTML = "javascript is working";
-/*
+
 function friendToggle(type,user,elem){
   var conf = confirm("Press OK to confirm the '"+type+"' action for user <?php echo $viewed; ?>.");
   if(conf != true){
@@ -158,7 +162,7 @@ function friendToggle(type,user,elem){
   }
   ajax.send("type="+type+"&user="+user);
 }
- */
+ 
 function blockToggle(type,blockee,elem){
   var conf = confirm("Press OK to confirm the '"+type+"' action on user <?php echo $viewer; ?>.");
   if(conf != true){

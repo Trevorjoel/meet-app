@@ -2,7 +2,10 @@
 include_once("../startsession.php");
 include_once("../connectvars.php");
 if (isset($_POST['type']) && isset($_POST['user'])){
+  
   $viewer = $_SESSION['user_id'];
+
+ 
   $user = preg_replace('#[^a-z0-9]#i', '', $_POST['user']);
   $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
   $sql = "SELECT (user_id) FROM mismatch_user WHERE user_id='$user' AND activated='1' LIMIT 1";
@@ -13,6 +16,8 @@ if (isset($_POST['type']) && isset($_POST['user'])){
     echo "$user does not exist.";
     exit();
   }
+  
+ 
   if($_POST['type'] == "friend"){
     $sql = "SELECT COUNT(id) FROM friends WHERE user1='$user' AND accepted='1' OR user2='$user' AND accepted='0'";
     $query = mysqli_query($dbc, $sql);
@@ -92,4 +97,5 @@ if (isset($_POST['type']) && isset($_POST['user'])){
     }
   }
 }
+
 ?>

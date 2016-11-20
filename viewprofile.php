@@ -1,5 +1,4 @@
- <?php
-
+<?php
 require_once('startsession.php');
 $page_title = 'View profile';
 require_once('header.php');
@@ -17,7 +16,6 @@ require_once('header.php');
   }
   // Connect to the database
   $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-
   // Grab the profile data from the database
   if (!isset($_GET['user_id'])) {
     $query = "SELECT username, first_name, last_name, gender, birthdate, city, state, picture FROM mismatch_user WHERE user_id = '" . $_SESSION['user_id'] . "'";
@@ -26,7 +24,6 @@ require_once('header.php');
     $query = "SELECT username, first_name, last_name, gender, birthdate, city, state, picture FROM mismatch_user WHERE user_id = '" . $_GET['user_id'] . "'";
   }
   $data = mysqli_query($dbc, $query);
-
   if (mysqli_num_rows($data) == 1) {
     // The user row was found so display the user data
     $row = mysqli_fetch_array($data);
@@ -84,7 +81,6 @@ require_once('header.php');
     
   
   if (isset($_SESSION['user_id']) && ($_GET['user_id'] )  !== ($_SESSION['user_id'])) {
-
 $isOwner = "";
     $isFriend = "false";
 $ownerBlockViewer = "false";
@@ -108,9 +104,8 @@ $friend_check = "SELECT id FROM friends WHERE user1='$viewer' AND user2='$viewed
         $viewerBlockOwner = true;
     }
     
-
+   print_r($isFriend); 
  $friend_button = '<button disabled>Request As Friend</button>';
-
  
 // LOGIC FOR FRIEND BUTTON
 $isOwner = ($_GET['user_id']) == ($_SESSION['user_id']) ;
@@ -118,12 +113,9 @@ $isOwner = ($_GET['user_id']) == ($_SESSION['user_id']) ;
   if($isFriend == 1){
   $friend_button = '<button onclick="friendToggle(\'unfriend\',\''.$viewed.'\',\'friendBtn\')">Unfriend</button>';
 } else{ 
-  $friend_button = '<button onclick="friendToggle(\'friend\',\''.$viewer.'\',\'friendBtn\')">Request As Friend</button>';
-
+  $friend_button = '<button onclick="friendToggle(\'friend\',\''.$viewed.'\',\'friendBtn\')">Request As Friend</button>';
   //'<button onclick="friendToggle(\'friend\',\''.$viewed.'\',\'friendBtn\'fu)">Request As Friend</button>';
 }
-
-print_r($ownerBlockViewer);
 
 // LOGIC FOR BLOCK BUTTON
 if($viewerBlockOwner == 1){
@@ -131,6 +123,9 @@ if($viewerBlockOwner == 1){
 } else if ($viewed != $viewer){
   $block_button = '<button onclick="blockToggle(\'block\',\''.$viewed.'\',\'blockBtn\')">Block User</button>';
 }
+    print "viewer:: $viewer"; 
+    print "viewed:: $viewed";
+
 ?>
 <div id="Div1"></div>
 <p>Friend Button: <span id="friendBtn"><?php echo $friend_button; ?></span></p>
@@ -138,9 +133,7 @@ if($viewerBlockOwner == 1){
 
 
 <script type="text/javascript">
-
 get_id ("Div1") .innerHTML = "javascript is working";
-
 function friendToggle(type,user,elem){
   var conf = confirm("Press OK to confirm the '"+type+"' action for user <?php echo $viewed; ?>.");
   if(conf != true){
@@ -150,9 +143,9 @@ function friendToggle(type,user,elem){
   var ajax = ajaxObj("POST", "php_parsers/friend_system.php");
   ajax.onreadystatechange = function() {
     if(ajaxReturn(ajax) == true) {
-      if(ajax.responseText == "friend_request_sent"){
+      if(ajax.responseText == "Friend request sent"){
         get_id(elem).innerHTML = 'OK Friend Request Sent';
-      } else if(ajax.responseText == "unfriend_ok"){
+      } else if(ajax.responseText == "unfriend ok"){
         get_id(elem).innerHTML = '<button onclick="friendToggle(\'friend\',\'<?php echo $viewed; ?>\',\'friendBtn\')">Request As Friend</button>';
       } else {
         alert(ajax.responseText);
@@ -185,12 +178,10 @@ function blockToggle(type,blockee,elem){
   }
   ajax.send("type="+type+"&blockee="+blockee);
 }
-
 </script>
 <!--
  print "Viewer block owner: $viewerBlockOwner<br>";
 print "owner block viewer: $ownerBlockViewer<br>";
-
     echo "viewed:: $viewed<br>"; 
     print "viewer:: $viewer"; 
 -->
@@ -200,10 +191,6 @@ print "owner block viewer: $ownerBlockViewer<br>";
   
 
 <?php
-
-
-
-
 // Only look for a mismatch if the user has questionnaire responses stored
   $query = "SELECT * FROM mismatch_response WHERE user_id = '" . $_SESSION['user_id'] . "'";
   $data = mysqli_query($dbc, $query);
@@ -219,13 +206,11 @@ print "owner block viewer: $ownerBlockViewer<br>";
     while ($row = mysqli_fetch_array($data)) {
       array_push($user_responses, $row);
     }
-
     // Initialize the mismatch search results
     $mismatch_score = 0;
     $mismatch_user_id = -1;
     $mismatch_topics = array();
     $mismatch_categories = array();
-
     // Loop through the user table comparing other people's responses to the user's responses
     $query = "SELECT user_id FROM mismatch_user WHERE user_id != '" . $_GET['user_id'] . "'";
     $data = mysqli_query($dbc, $query);
@@ -237,7 +222,6 @@ print "owner block viewer: $ownerBlockViewer<br>";
       while ($row2 = mysqli_fetch_array($data2)) {
         array_push($mismatch_responses, $row2);
       } // End of inner while loop
-
       // Compare each response and calculate a mismatch total
       $score = 0;
       $topics = array();
@@ -249,7 +233,6 @@ print "owner block viewer: $ownerBlockViewer<br>";
           array_push($categories, $user_responses[$i]['category_name']);
         }
       }
-
       // Check to see if this person is better than the best mismatch so far
       if ($score > $mismatch_score) {
         // We found a better mismatch, so update the mismatch search results
@@ -259,14 +242,12 @@ print "owner block viewer: $ownerBlockViewer<br>";
         $mismatch_categories = array_slice($categories, 0);
       }
     } // End of outer while loop
-
     // Make sure a match was found
     if ($mismatch_user_id != -1) {
       $query = "SELECT username, first_name, last_name, city, state, picture FROM mismatch_user WHERE user_id = '$mismatch_user_id'";
       $data = mysqli_query($dbc, $query);
       if (mysqli_num_rows($data) == 1) {
        
-
         
         //Begin bargraph
         // Calculate the mismatched category totals
@@ -280,14 +261,12 @@ print "owner block viewer: $ownerBlockViewer<br>";
             $category_totals[count($category_totals) - 1][1]++;
           }
         }
-
         // Generate and display the mismatched category bar graph image
         echo '<h4>Match category breakdown:</h4>';
         draw_bar_graph(480, 240, $category_totals, 5, 'MM_UPLOADPATH' . $_SESSION['user_id'] . '-mymismatchgraph.png');
         echo '<img src="' . 'MM_UPLOADPATH' . $_SESSION['user_id'] . '-mymismatchgraph.png" alt="Mismatch category graph" />';
 echo '</td></tr></table>';
         //end bar graph
-
         // Display the matched topics in a table with four columns
         echo '<h4>You feel the same about the following ' . count($mismatch_topics) . ' topics:</h4>';
         echo '<table ><tr>';
@@ -310,10 +289,6 @@ echo '</td></tr></table>';
 }else{
   mysqli_close($dbc);
 }
-
-
-
-
 ?>
 <?php 
 require_once('footer.php');

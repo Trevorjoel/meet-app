@@ -128,34 +128,37 @@ if($viewerBlockOwner == 1){
   $block_button = '<button onclick="blockToggle(\'block\',\''.$viewed.'\',\'blockBtn\')">Block User</button>';
 }
 ?>
-
+<div id="Div1"></div>
 <p>Friend Button: <span id="friendBtn"><?php echo $friend_button; ?></span></p>
   <p>Block Button: <span id="blockBtn"><?php echo $block_button; ?></span></p>
 
+<script src="js/ajax.js"></script>
 <script type="text/javascript">
-/* 
+
+get_id ("Div1") .innerHTML = "javascript is working";
+/*
 function friendToggle(type,user,elem){
-  var conf = confirm("Press OK to confirm the '"+type+"' action for user <?php echo $viewer; ?>.");
+  var conf = confirm("Press OK to confirm the '"+type+"' action for user <?php echo $viewed; ?>.");
   if(conf != true){
     return false;
   }
-  _(elem).innerHTML = 'please wait ...';
+  get_id(elem).innerHTML = 'please wait ...';
   var ajax = ajaxObj("POST", "php_parsers/friend_system.php");
   ajax.onreadystatechange = function() {
     if(ajaxReturn(ajax) == true) {
       if(ajax.responseText == "friend_request_sent"){
-        _(elem).innerHTML = 'OK Friend Request Sent';
+        get_id(elem).innerHTML = 'OK Friend Request Sent';
       } else if(ajax.responseText == "unfriend_ok"){
-        _(elem).innerHTML = '<button onclick="friendToggle(\'friend\',\'<?php echo $viewer; ?>\',\'friendBtn\')">Request As Friend</button>';
+        get_id(elem).innerHTML = '<button onclick="friendToggle(\'friend\',\'<?php echo $viewed; ?>\',\'friendBtn\')">Request As Friend</button>';
       } else {
         alert(ajax.responseText);
-        _(elem).innerHTML = 'Try again later';
+        get_id(elem).innerHTML = 'Try again later';
       }
     }
   }
   ajax.send("type="+type+"&user="+user);
 }
-*/
+ */
 function blockToggle(type,blockee,elem){
   var conf = confirm("Press OK to confirm the '"+type+"' action on user <?php echo $viewer; ?>.");
   if(conf != true){
@@ -178,6 +181,7 @@ function blockToggle(type,blockee,elem){
   }
   ajax.send("type="+type+"&blockee="+blockee);
 }
+
 </script>
 <!--
  print "Viewer block owner: $viewerBlockOwner<br>";
@@ -292,11 +296,7 @@ echo '</td></tr></table>';
           }
         }
         echo '</tr></table><br>';
-
         
-
-        // Display a link to the mismatch user's profile
-        echo '<h4>View <a href=viewprofile.php?user_id=' . $_GET['user_id'] . '>' . $row['first_name'] . '\'s profile</a>.</h4>';
       } // End of check for a single row of mismatch user results
     } // End of check for a user mismatch
   } // End of check for any questionnaire response results

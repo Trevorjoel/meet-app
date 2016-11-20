@@ -3,7 +3,7 @@
 
   // Start the session
   require_once('startsession.php');
-
+require_once('php_functions.php');
   // Insert the page header
   $page_title = 'My match';
   require_once('header.php');
@@ -115,6 +115,7 @@
 
         // Generate and display the mismatched category bar graph image
         echo '<h4>Mismatched category breakdown:</h4>';
+        draw_bar_graph(480, 240, $category_totals, 5, 'MM_UPLOADPATH' . $_SESSION['user_id'] . '-mymismatchgraph.png');
         //draw_bar_graph(480, 240, $category_totals, 5, 'MM_UPLOADPATH' . $_SESSION['user_id'] . '-mymismatchgraph.png');
         echo '<img src="' . 'MM_UPLOADPATH' . $_SESSION['user_id'] . '-mymismatchgraph.png" alt="Mismatch category graph" />';
 echo '</td></tr></table>';

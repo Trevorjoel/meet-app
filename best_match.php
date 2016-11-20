@@ -1,7 +1,9 @@
   
   <?php 
   //Check matches ONLY when looking at another users profile
- if (isset($_GET['user_id']) && ($_GET['user_id'] )  !== ($_SESSION['user_id'])) {// Only look for a mismatch if the user has questionnaire responses stored
+ if (isset($_GET['user_id']) && ($_GET['user_id'] )  !== ($_SESSION['user_id'])) {
+
+ // Only look for a mismatch if the user has questionnaire responses stored
   $query = "SELECT * FROM mismatch_response WHERE user_id = '" . $_SESSION['user_id'] . "'";
   $data = mysqli_query($dbc, $query);
   if (mysqli_num_rows($data) != 0) {

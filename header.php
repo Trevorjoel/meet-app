@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <?php echo '<title>Meet a Russian - ' . $page_title . '</title>';
   ?>
-
+<script src="js/main.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css" />
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">

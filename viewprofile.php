@@ -7,7 +7,10 @@ require_once('connectvars.php');
 require_once('php_functions.php');
 require_once('navmenu.php');
 ?>
- 
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+</head>
 <?php
 // Make sure the user is logged in before going any further.
 if (!isset($_SESSION['user_id'])) {
@@ -22,7 +25,7 @@ if (!isset($_GET['user_id'])) {
     $data = mysqli_query($dbc, $query);
     $row = mysqli_fetch_array($data);
     $viewer = $row['username'];
-    print_r($viewer);
+    
 
 } else {
     $query = "SELECT username, first_name, last_name, gender, birthdate, city, state, picture FROM mismatch_user WHERE user_id = '" . $_GET['user_id'] . "'";
@@ -34,8 +37,7 @@ if (!isset($_GET['user_id'])) {
     $data1 = mysqli_query($dbc, $query1);
     $row = mysqli_fetch_array($data1);
     $viewer = $row['username'];
-    print_r($viewed);
-    print_r($viewer);
+    
 }
 $data = mysqli_query($dbc, $query);
 if (mysqli_num_rows($data) == 1) {
@@ -116,7 +118,7 @@ $friend_check = "SELECT id FROM friends WHERE user1='$viewer_id' AND user2='$vie
         $viewerBlockOwner = true;
     }
     
-   print_r($isFriend); 
+    
  $friend_button = '<button disabled>Request As Friend</button>';
  
 // LOGIC FOR FRIEND BUTTON
@@ -141,7 +143,7 @@ if($viewerBlockOwner == 1){
 <p>Friend Button: <span id="friendBtn"><?php echo $friend_button; ?></span></p>
   <p>Block Button: <span id="blockBtn"><?php echo $block_button; ?></span></p>
 <?php 
-print "<hr />"; 
+print "<hr /><br><h4>$viewed's friends:</h4>"; 
 $friendsHTML = '';
 $friends_view_all_link = '';
 $sql = "SELECT COUNT(id) FROM friends WHERE user1='$viewed_id' AND accepted='1' OR user2='$viewed_id' AND accepted='1'";
@@ -151,10 +153,13 @@ $friend_count = $query_count[0];
 if($friend_count < 1){
     $friendsHTML = $viewed." has no friends yet";
 } else {
-    $max = 10;
+    $max = 18;
     $all_friends = array();
-    $sql = "SELECT user1 FROM friends WHERE user2='$viewer_id' AND accepted='1' ORDER BY RAND() LIMIT $max";
+    $sql = "SELECT user1 FROM friends WHERE user2='$viewed_id' AND accepted='1' ORDER BY RAND() LIMIT $max";
+
     $query = mysqli_query($dbc, $sql);
+    
+    
     while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
         array_push($all_friends, $row["user1"]);
     }
@@ -162,6 +167,7 @@ if($friend_count < 1){
     $query = mysqli_query($dbc, $sql);
     while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
         array_push($all_friends, $row["user2"]);
+
     }
 
     $friendArrayCount = count($all_friends);
@@ -174,25 +180,39 @@ if($friend_count < 1){
     }
 
     $orLogic = '';
+
     foreach($all_friends as $key => $user){
-            $orLogic .= "username='$user' OR ";
+            $orLogic .= "user_id='$user' OR ";
+            
     }
 
     $orLogic = chop($orLogic, "OR ");
-    $sql = "SELECT username, picture FROM mismatch_user WHERE $orLogic";
+
+//echo "This code in use";
+    $sql = "SELECT user_id, username, picture FROM mismatch_user WHERE $orLogic";
+
     $query = mysqli_query($dbc, $sql);
+    
     while($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+        $friend_id = $row["user_id"];
         $friend_username = $row["username"];
         $friend_avatar = $row["picture"];
         if($friend_avatar != ""){
-            $friend_pic = 'user/'.$friend_username.'/'.$friend_avatar.'';
+            $friendsHTML .= 
+        '<a href="viewprofile.php?user_id='.$friend_id.'"><img class="friendpics img-circle" src="' . MM_UPLOADPATH . $row['picture'] . '" class="img-circle" alt="Profile Picture" alt="'.$friend_username.'" title="'.$friend_username.'"></a>';
+
+
         } else {
-            $friend_pic = 'images/avatardefault.jpg';
+            $friendsHTML .= 
+        '<a href="viewprofile.php?user_id='.$friend_id.'"><img class="friendpics" src="images/nopic.jpg" class="friendpics img-circle" alt="Profile Picture" alt="'.$friend_username.'" title="'.$friend_username.'"></a>';
+
         }
-        $friendsHTML .= '<a href="user.php?u='.$friend_username.'"><img class="friendpics" src="'.$friend_pic.'" alt="'.$friend_username.'" title="'.$friend_username.'"></a>';
+        
+        
     }
+
 }
-print_r($friendsHTML);
+echo "$friendsHTML<hr>";
 ?>
 
 <script type="text/javascript">
@@ -242,12 +262,7 @@ function blockToggle(type,blockee,elem){
   ajax.send("type="+type+"&blockee="+blockee);
 }
 </script>
-<!--
- print "Viewer block owner: $viewerBlockOwner<br>";
-print "owner block viewer: $ownerBlockViewer<br>";
-    echo "viewed:: $viewed<br>"; 
-    print "viewer:: $viewer"; 
--->
+
 
 
 

@@ -5,11 +5,8 @@ if (isset($_POST['type']) && isset($_POST['user'])) {
  $dbc         = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
      $query = "SELECT user_id, username, first_name, last_name, gender, birthdate, city, state, picture FROM mismatch_user WHERE user_id = '" . $_POST['user'] . "'";
     $data = mysqli_query($dbc, $query);
-    /*if (!$data) {
-    printf("Error: %s\n", mysqli_error($dbc));
-    exit();
-}
-*/
+    
+
     $row = mysqli_fetch_array($data);
   $viewed = $row['username'];
   $viewed_id = $row['user_id'];
@@ -76,7 +73,7 @@ if (isset($_POST['type']) && isset($_POST['user'])) {
           echo "You have a pending friend request already sent to $viewed.";
           exit();
       } else if ($row_count4[0] > 0) {
-        mysqli_close($db_conx);
+        mysqli_close($dbc);
           echo "$viewed has requested to friend with you first. Check your friend requests.";
           exit();
       } else {
@@ -116,7 +113,7 @@ if (isset($_POST['type']) && isset($_POST['user'])) {
     if (isset($_POST['action']) && isset($_POST['reqid']) && isset($_POST['user1'])){
   $reqid = preg_replace('#[^0-9]#', '', $_POST['reqid']);
   $user = preg_replace('#[^a-z0-9]#i', '', $_POST['user1']);
-  $sql = "SELECT COUNT(id) FROM mismatch_user WHERE username='$user' AND activated='1' LIMIT 1";
+  $sql = "SELECT COUNT(user_id) FROM mismatch_user WHERE username='$viewer' AND activated='1' LIMIT 1";
   $query = mysqli_query($dbc, $sql);
   $exist_count = mysqli_fetch_row($query);
   if($exist_count[0] < 1){

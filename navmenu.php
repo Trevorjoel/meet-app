@@ -16,7 +16,6 @@ if (isset($_SESSION['username'])) {
 	$query = mysqli_query($dbc, $sql);
 	$row = mysqli_fetch_row($query);
 	$notescheck = $row[0];
-	print_r($row[0]);
 	$sql = "SELECT id FROM notifications WHERE username='$viewer' AND date_time > '$notescheck' LIMIT 1";
 	$query = mysqli_query($dbc, $sql);
 	$numrows = mysqli_num_rows($query);
@@ -33,7 +32,7 @@ if (isset($_SESSION['username'])) {
 
 
 }
-print_r($envelope);
+echo "$envelope";
 ?>
 
 <?php

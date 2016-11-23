@@ -13,6 +13,7 @@ require_once('header.php');
     exit();
     }else{
     	$viewer_id = $_SESSION['user_id'];
+    	$viewer = $_SESSION['username'];
  ?>
   
 <script type="text/javascript">
@@ -21,16 +22,16 @@ function friendReqHandler(action,reqid,user1,elem){
 	if(conf != true){
 		return false;
 	}
-	_(elem).innerHTML = "processing ...";
+	get_id(elem).innerHTML = "processing ...";
 	var ajax = ajaxObj("POST", "php_parsers/friend_system.php");
 	ajax.onreadystatechange = function() {
 		if(ajaxReturn(ajax) == true) {
 			if(ajax.responseText == "accept_ok"){
-				_(elem).innerHTML = "<b>Request Accepted!</b><br />Your are now friends";
+				get_id(elem).innerHTML = "<b>Request Accepted!</b><br />Your are now friends";
 			} else if(ajax.responseText == "reject_ok"){
-				_(elem).innerHTML = "<b>Request Rejected</b><br />You chose to reject friendship with this user";
+				get_id(elem).innerHTML = "<b>Request Rejected</b><br />You chose to reject friendship with this user";
 			} else {
-				_(elem).innerHTML = ajax.responseText;
+				get_id(elem).innerHTML = ajax.responseText;
 			}
 		}
 	}
@@ -41,8 +42,9 @@ function friendReqHandler(action,reqid,user1,elem){
 
 <?php
 }
+print_r($viewer);
 $notification_list = "";
-$sql = "SELECT * FROM notifications WHERE username LIKE BINARY '$viewer_id' ORDER BY date_time DESC";
+$sql = "SELECT * FROM notifications WHERE username LIKE BINARY '$viewer' ORDER BY date_time DESC";
 $query = mysqli_query($dbc, $sql);
 $numrows = mysqli_num_rows($query);
 if($numrows < 1){

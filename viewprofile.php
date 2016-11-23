@@ -104,11 +104,12 @@ if (isset ($_GET['user_id'])) {
   $viewed_id = $_GET['user_id'];
 }
   
-$friend_check = "SELECT id FROM friends WHERE user1='$viewer_id' AND user2='$viewed_id' AND accepted='1' LIMIT 1";
+$friend_check = "SELECT id FROM friends WHERE user1='$viewed_id' AND user2='$viewer_id' OR  user1='$viewer_id' AND user2='$viewed_id' AND accepted='1' LIMIT 1";
     
    if(mysqli_num_rows(mysqli_query($dbc, $friend_check)) > 0){
         $isFriend = true;
     }
+    print_r($isFriend);
     $block_check1 = "SELECT id FROM blockedusers WHERE blocker='$viewed' AND blockee='$viewer_id' LIMIT 1";
   if(mysqli_num_rows(mysqli_query($dbc, $block_check1)) > 0){
         $ownerBlockViewer = true;
@@ -125,7 +126,7 @@ $friend_check = "SELECT id FROM friends WHERE user1='$viewer_id' AND user2='$vie
 $isOwner = ($_GET['user_id']) == ($_SESSION['user_id']) ;
   
   if($isFriend == 1){
-  $friend_button = '<button onclick="friendToggle(\'unfriend\',\''.$viewed_id.'\',\'friendBtn\')">Unfriend</button>';
+  $friend_button = '<button onclick="friendToggle(\'unfriend\',\''.$viewed.'\',\'friendBtn\')">Unfriend</button>';
 } else{ 
   $friend_button = '<button onclick="friendToggle(\'friend\',\''.$viewed_id.'\',\'friendBtn\')">Request As Friend</button>';
   //'<button onclick="friendToggle(\'friend\',\''.$viewed.'\',\'friendBtn\'fu)">Request As Friend</button>';
@@ -143,6 +144,7 @@ if($viewerBlockOwner == 1){
 <p>Friend Button: <span id="friendBtn"><?php echo $friend_button; ?></span></p>
   <p>Block Button: <span id="blockBtn"><?php echo $block_button; ?></span></p>
 <?php 
+//Friends list
 print "<hr /><br><h4>$viewed's friends:</h4>"; 
 $friendsHTML = '';
 $friends_view_all_link = '';
@@ -188,7 +190,6 @@ if($friend_count < 1){
 
     $orLogic = chop($orLogic, "OR ");
 
-//echo "This code in use";
     $sql = "SELECT user_id, username, picture FROM mismatch_user WHERE $orLogic";
 
     $query = mysqli_query($dbc, $sql);
@@ -232,7 +233,7 @@ function friendToggle(type,user,elem){
         get_id(elem).innerHTML = '<button onclick="friendToggle(\'friend\',\'<?php echo $viewed_id; ?>\',\'friendBtn\')">Request As Friend</button>';
       } else {
         alert(ajax.responseText);
-        get_id(elem).innerHTML = 'Try again later';
+        get_id(elem).innerHTML = '<button disabled>Request As Friend</button>';
       }
     }
   }
@@ -371,5 +372,6 @@ echo '</td></tr></table>';
 <?php 
 require_once('footer.php');
 ?>
+</div>
 </body> 
 </html>

@@ -16,6 +16,6 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<div align="center">
  <?php echo '<h3>Meet a russian - ' . $page_title . '</h3>';
  ?>

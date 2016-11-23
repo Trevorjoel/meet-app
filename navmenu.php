@@ -20,10 +20,11 @@ if (isset($_SESSION['username'])) {
 	$query = mysqli_query($dbc, $sql);
 	$numrows = mysqli_num_rows($query);
 	if ($numrows == 0) {
-		$envelope = '<a href="notifications.php" title="You have new notifications"><img src="images/new_note.gif" width="35" height="40" alt="Notes"></a>';
+		$envelope = '<a href="notifications.php" title="Your notifications and friend requests"><img src="images/bg-mail.png" width="35" height="40" alt="Notes"></a>';
+		
     } else {
 		
-		$envelope = '<a href="notifications.php" title="Your notifications and friend requests"><img src="images/bg-mail.png" width="35" height="40" alt="Notes"></a>';
+		$envelope = '<a href="notifications.php" title="You have new notifications"><img src="images/new_note.gif" width="35" height="40" alt="Notes"></a>';
 	}
     
 

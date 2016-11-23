@@ -109,7 +109,7 @@ $friend_check = "SELECT id FROM friends WHERE user1='$viewed_id' AND user2='$vie
    if(mysqli_num_rows(mysqli_query($dbc, $friend_check)) > 0){
         $isFriend = true;
     }
-    print_r($isFriend);
+    
     $block_check1 = "SELECT id FROM blockedusers WHERE blocker='$viewed' AND blockee='$viewer_id' LIMIT 1";
   if(mysqli_num_rows(mysqli_query($dbc, $block_check1)) > 0){
         $ownerBlockViewer = true;
@@ -126,7 +126,7 @@ $friend_check = "SELECT id FROM friends WHERE user1='$viewed_id' AND user2='$vie
 $isOwner = ($_GET['user_id']) == ($_SESSION['user_id']) ;
   
   if($isFriend == 1){
-  $friend_button = '<button onclick="friendToggle(\'unfriend\',\''.$viewed.'\',\'friendBtn\')">Unfriend</button>';
+  $friend_button = '<button onclick="friendToggle(\'unfriend\',\''.$viewed_id.'\',\'friendBtn\')">Unfriend</button>';
 } else{ 
   $friend_button = '<button onclick="friendToggle(\'friend\',\''.$viewed_id.'\',\'friendBtn\')">Request As Friend</button>';
   //'<button onclick="friendToggle(\'friend\',\''.$viewed.'\',\'friendBtn\'fu)">Request As Friend</button>';
@@ -141,8 +141,8 @@ if($viewerBlockOwner == 1){
    
 ?>
 <div id="Div1"></div>
-<p>Friend Button: <span id="friendBtn"><?php echo $friend_button; ?></span></p>
-  <p>Block Button: <span id="blockBtn"><?php echo $block_button; ?></span></p>
+<span id="friendBtn"><?php echo $friend_button; ?></span>
+  <span id="blockBtn"><?php echo $block_button; ?></span></p>
 <?php 
 //Friends list
 print "<hr /><br><h4>$viewed's friends:</h4>"; 
@@ -217,7 +217,9 @@ echo "$friendsHTML<hr>";
 ?>
 
 <script type="text/javascript">
-get_id ("Div1") .innerHTML = "javascript is working";
+
+g//et_id ("Div1") .innerHTML = "javascript is working";
+
 function friendToggle(type,user,elem){
   var conf = confirm("Press OK to confirm the '"+type+"' action for user <?php echo $viewed; ?>.");
   if(conf != true){

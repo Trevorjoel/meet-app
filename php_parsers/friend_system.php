@@ -1,12 +1,12 @@
  <?php
 include_once("../startsession.php");
 include_once("../connectvars.php");
+//This file parses data from the add friends block user features
+//select data for the logged user and ajax posted data
 if (isset($_POST['type']) && isset($_POST['user']))  {
  $dbc         = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
      $query = "SELECT user_id, username, first_name, last_name, gender, birthdate, city, state, picture FROM mismatch_user WHERE user_id = '" . $_POST['user'] . "'";
-    $data = mysqli_query($dbc, $query);
-    
-
+    $data = mysqli_query($dbc, $query);    
     $row = mysqli_fetch_array($data);
     $viewed = $row['username'];
     $viewed_id = $row['user_id'];   

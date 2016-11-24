@@ -11,6 +11,7 @@ if (isset($_SESSION['username'])) {
   echo ' &#10084; <a href="editprofile.php"> Edit Profile</a> ';
    echo '&#10084;<a href="questionnaire.php"> Questionnaire</a>  ';
   echo '&#10084; <a href="Logout.php"> log out (' . $_SESSION['username'] . ')</a>';
+  //Generate the notifications
   $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
   $sql = "SELECT notescheck FROM mismatch_user WHERE username='$username' LIMIT 1";
 	$query = mysqli_query($dbc, $sql);

@@ -15,7 +15,7 @@ require_once('header.php');
     	$viewer_id = $_SESSION['user_id'];
     	$viewer = $_SESSION['username'];
  ?>
-  
+  <!--BEGIN Js code for accepting and rejecting friends-->
 <script type="text/javascript">
 function friendReqHandler(action,reqid,user1,elem){
 	var conf = confirm("Press OK to '"+action+"' this friend request.");
@@ -38,11 +38,11 @@ function friendReqHandler(action,reqid,user1,elem){
 	ajax.send("action="+action+"&reqid="+reqid+"&user1="+user1);
 }
 </script>
-
+<!--END Js code for accepting and rejecting friends -->
 
 <?php
 }
-print_r($viewer);
+//BEGIN code for notes check and update checked notes
 $notification_list = "";
 $sql = "SELECT * FROM notifications WHERE username LIKE BINARY '$viewer' ORDER BY date_time DESC";
 $query = mysqli_query($dbc, $sql);
@@ -61,20 +61,13 @@ if($numrows < 1){
 	}
 }
 mysqli_query($dbc, "UPDATE mismatch_user SET notescheck=now() WHERE user_id='$viewer_id' LIMIT 1");
-
-?><?php
+//END notes check and update checked notes
+//BEGIN FRIEND REQUESTS 
 $friend_requests = "";
 $sql = "SELECT * FROM friends WHERE user2='$viewer_id' AND accepted='0' ORDER BY datemade ASC";
 $query = mysqli_query($dbc, $sql);
 
 $numrows = mysqli_num_rows($query);
-//sql error checking
-   //print_r($numrows);
-    if (!$query) {
-    printf("Error: %s\n", mysqli_error($dbc));
-    exit();
-}
-
 if($numrows < 1){
 
 	$friend_requests = 'No friend requests';
@@ -84,20 +77,15 @@ if($numrows < 1){
 		$user1 = $row["user1"];
 		$datemade = $row["datemade"];
 		$datemade = strftime("%B %d", strtotime($datemade));
-		$thumbquery = mysqli_query($dbc, "SELECT picture FROM mismatch_user WHERE user_id='$user1' LIMIT 1");
-		//sql error checking
-   //print_r($numrows);
+		$thumbquery = mysqli_query($dbc, "SELECT picture FROM mismatch_user WHERE user_id='$user1' LIMIT 1");		
     if (!$thumbquery) {
     printf("Error: %s\n", mysqli_error($dbc));
     exit();
 }
 		
 		$thumbrow = mysqli_fetch_row($thumbquery);
-		//print_r($user1);
 		$user1avatar = $thumbrow[0];
-		//print_r($thumbrow[0]);
 		$user1pic = '<img src="images/'.  $thumbrow[0].'" alt="'.$user1.'" class="user_pic">';
-		//print_r($user1pic);
 		if($user1avatar == NULL){
 			$user1pic = '<img src="images/nopic.jpg" alt="'.$user1.'" class="user_pic">';
 		}
@@ -114,7 +102,10 @@ if($numrows < 1){
 <div id="notesBox"><h2>Notifications</h2><?php echo $notification_list; ?></div>
   <div id="friendReqBox"><h2>Friend Requests</h2><?php echo $friend_requests; ?></div>
   <div style="clear:left;"></div>
-  <!-- END Page Content -->
+  <?php 
+require_once('footer.php');
+  ?>
+  <!-- END friend requests -->
 </div>
 
     

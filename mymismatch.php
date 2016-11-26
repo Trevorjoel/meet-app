@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="style.css" />
+<div align="center">
 <?php
 
   // Start the session
@@ -6,21 +7,15 @@
 require_once('php_functions.php');
   // Insert the page header
   $page_title = 'My match';
-  require_once('header.php');
-
   require_once('appvars.php');
   require_once('connectvars.php');
   
 
   // Make sure the user is logged in before going any further.
-  if (!isset($_SESSION['user_id'])) {
-    echo '<p class="login">Please <a href="login.php">log in</a> to access this page.</p>';
+  if (!isset($_SESSION['user_id'])) {  
     exit();
   }
-
-  // Show the navigation menu
-  require_once('navmenu.php');
-
+  echo "<h1>Your best match</h1>";
   // Connect to the database
   $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
@@ -146,7 +141,4 @@ echo '</td></tr></table>';
   }
 
   mysqli_close($dbc);
-
-  // Insert the page footer
-  require_once('footer.php');
 ?>

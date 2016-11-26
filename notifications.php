@@ -5,15 +5,18 @@ require_once('header.php');
   require_once('appvars.php');
   require_once('connectvars.php');
   require_once('php_functions.php');
-  require_once('navmenu.php');
+ 
   
 // Make sure the user is logged in before going any further.
   if (!isset($_SESSION['user_id'])) {
     echo '<p class="login">Please <a href="login.php">log in</ a> to access this page.</p>';
     exit();
-    }else{
+    }
+   /* if  (isset($_GET['user_id']) || ($_SESSION['user_id'] == $_GET['user_id'])) {
+*/ print_r($_SESSION['user_id']);
     	$viewer_id = $_SESSION['user_id'];
     	$viewer = $_SESSION['username'];
+    	
  ?>
   <!--BEGIN Js code for accepting and rejecting friends-->
 <script type="text/javascript">
@@ -41,7 +44,7 @@ function friendReqHandler(action,reqid,user1,elem){
 <!--END Js code for accepting and rejecting friends -->
 
 <?php
-}
+
 //BEGIN code for notes check and update checked notes
 $notification_list = "";
 $sql = "SELECT * FROM notifications WHERE username LIKE BINARY '$viewer' ORDER BY date_time DESC";
@@ -98,12 +101,13 @@ if($numrows < 1){
 		$friend_requests .= '</div>';
 	}
 }
+
 ?>
 <div id="notesBox"><h2>Notifications</h2><?php echo $notification_list; ?></div>
   <div id="friendReqBox"><h2>Friend Requests</h2><?php echo $friend_requests; ?></div>
   <div style="clear:left;"></div>
   <?php 
-require_once('footer.php');
+
   ?>
   <!-- END friend requests -->
 </div>

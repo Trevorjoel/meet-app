@@ -85,20 +85,14 @@ if (mysqli_num_rows($data) == 1) {
     echo '</table>';
 require_once('block_add.php');
 
-    require_once('friendlist.php');
-} // End of check for a single row of user results
-else {
-    echo '<p class="error">There was a problem accessing your profile.</p>';
-}
-if (!isset($_GET['user_id']) || ($_SESSION['user_id'] == $_GET['user_id'])) {
-    echo '<p>Would you like to <a href="editprofile.php">edit your profile</a>?</p>';
-
-    exit();
-}
-   
-   
-
-//BEGIN code for QUESTIONNAIRE MATCHING 
+require_once('friendlist.php');
+    if (!isset($_GET['user_id'])) {
+      require_once('notifications.php');
+      require_once('mymismatch.php');
+      require_once('footer.php');
+     exit();
+    }else{
+    //BEGIN code for QUESTIONNAIRE MATCHING 
 // Only look for a mismatch if the user has questionnaire responses stored
   $query = "SELECT * FROM mismatch_response WHERE user_id = '" . $_SESSION['user_id'] . "'";
   $data = mysqli_query($dbc, $query);
@@ -171,13 +165,13 @@ if (!isset($_GET['user_id']) || ($_SESSION['user_id'] == $_GET['user_id'])) {
           }
         }
         // Generate and display the mismatched category bar graph image
-        echo '<h4>Match category breakdown:</h4>';
+        echo '<h4>You match with this user in the following ways:</h4>';
         draw_bar_graph(480, 240, $category_totals, 5, 'MM_UPLOADPATH' . $_SESSION['user_id'] . '-mymismatchgraph.png');
         echo '<img src="' . 'MM_UPLOADPATH' . $_SESSION['user_id'] . '-mymismatchgraph.png" alt="Mismatch category graph" />';
 echo '</td></tr></table>';
         //end bar graph
         // Display the matched topics in a table with four columns
-        echo '<h4>You feel the same about the following ' . count($mismatch_topics) . ' topics:</h4>';
+        echo '<h4>You can talk about these ' . count($mismatch_topics) . ' topics:</h4>';
         echo '<table ><tr>';
         $i = 0;
         foreach ($mismatch_topics as $topic) {
@@ -192,14 +186,32 @@ echo '</td></tr></table>';
       } // End of check for a single row of mismatch user results
     } // //END BARGRAPH code
   } // End of check for any questionnaire response results
+    require_once('footer.php');
+    exit();
+  }
+} // End of check for a single row of user results
+else {
+    echo '<p class="error">There was a problem accessing your profile.</p>';
+}
+if (!isset($_GET['user_id']) || ($_SESSION['user_id'] == $_GET['user_id'])) {
+    echo '<p>Would you like to <a href="editprofile.php">edit your profile</a>?</p>';
+
+    
+}
+   
+   
+
+
   else {
     echo '<p>You must first <a href="questionnaire.php">answer the questionnaire</a> before you can be mismatched.</p>';
     }
 
   mysqli_close($dbc);
 
+
 require_once('footer.php');
+
 ?>
 </div>
 </body> 
-</html>
+

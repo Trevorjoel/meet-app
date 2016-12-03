@@ -66,4 +66,16 @@ function img_resize($target, $newcopy, $w, $h, $ext) {
     imagejpeg($tci, $newcopy, 80);
    
 }
+function getAge($dob,$condate){ 
+            $birthdate = new DateTime(date("Y-m-d",  strtotime(implode('-', array_reverse(explode('/', $dob))))));
+            $today= new DateTime(date("Y-m-d",  strtotime(implode('-', array_reverse(explode('/', $condate))))));           
+            $age = $birthdate->diff($today)->y;
+            return $age;
+
+
+}
+
+      
+
+    
 ?>

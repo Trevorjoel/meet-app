@@ -4,16 +4,13 @@ $page_title = 'Social';
 require_once('header.php');
   require_once('appvars.php');
   require_once('connectvars.php');
-  require_once('php_functions.php');
- 
-  
+  require_once('php_functions.php'); 
 // Make sure the user is logged in before going any further.
   if (!isset($_SESSION['user_id'])) {
-    echo '<p class="login">Please <a href="login.php">log in</ a> to access this page.</p>';
     exit();
     }
    /* if  (isset($_GET['user_id']) || ($_SESSION['user_id'] == $_GET['user_id'])) {
-*/ print_r($_SESSION['user_id']);
+*/
     	$viewer_id = $_SESSION['user_id'];
     	$viewer = $_SESSION['username'];
     	
@@ -44,27 +41,6 @@ function friendReqHandler(action,reqid,user1,elem){
 <!--END Js code for accepting and rejecting friends -->
 
 <?php
-
-//BEGIN code for notes check and update checked notes
-$notification_list = "";
-$sql = "SELECT * FROM notifications WHERE username LIKE BINARY '$viewer' ORDER BY date_time DESC";
-$query = mysqli_query($dbc, $sql);
-$numrows = mysqli_num_rows($query);
-if($numrows < 1){
-	$notification_list = "You do not have any notifications";
-} else {
-	while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
-		$noteid = $row["id"];
-		$initiator = $row["initiator"];
-		$app = $row["app"];
-		$note = $row["note"];
-		$date_time = $row["date_time"];
-		$date_time = strftime("%b %d, %Y", strtotime($date_time));
-		$notification_list .= "<p><a href='user.php?u=$initiator'>$initiator</a> | $app<br />$note</p>";
-	}
-}
-mysqli_query($dbc, "UPDATE mismatch_user SET notescheck=now() WHERE user_id='$viewer_id' LIMIT 1");
-//END notes check and update checked notes
 //BEGIN FRIEND REQUESTS 
 $friend_requests = "";
 $sql = "SELECT * FROM friends WHERE user2='$viewer_id' AND accepted='0' ORDER BY datemade ASC";
@@ -103,7 +79,7 @@ if($numrows < 1){
 }
 
 ?>
-<div id="notesBox"><h2>Notifications</h2><?php echo $notification_list; ?></div>
+
   <div id="friendReqBox"><h2>Friend Requests</h2><?php echo $friend_requests; ?></div>
   <div style="clear:left;"></div>
   <?php 

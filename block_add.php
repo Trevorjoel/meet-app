@@ -20,7 +20,7 @@ $friend_check = "SELECT id FROM friends WHERE user1='$viewed_id' AND user2='$vie
    if(mysqli_num_rows(mysqli_query($dbc, $friend_check)) > 0){
         $isFriend = true;
     }
-    
+   
     $block_check1 = "SELECT id FROM blockedusers WHERE blocker='$viewed' AND blockee='$viewer_id' LIMIT 1";
   if(mysqli_num_rows(mysqli_query($dbc, $block_check1)) > 0){
         $ownerBlockViewer = true;

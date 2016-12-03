@@ -1,3 +1,7 @@
+
+
+    
+
 <?php
 require_once('startsession.php');
 
@@ -8,9 +12,9 @@ if (!isset($_GET['user_id']) || ($_SESSION['user_id'] == $_GET['user_id'])) {
     $viewed = $_SESSION['username'];
     }
     if (!isset($_GET['user_id']) || ($_SESSION['user_id'] == $_GET['user_id'])) {
-        print "<hr /><br><h4>Your friends:</h4>";
+        print '<div class="box-shade box-width"><br><h4>Your friends:</h4></div>';
     }else{
-print "<hr /><br><h4>$viewed's friends:</h4>"; 
+print "<div><br><h4>$viewed's friends:</h4></div>"; 
 }
 
 $friendsHTML = '';

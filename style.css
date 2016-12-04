@@ -46,10 +46,10 @@ div.pm_wrap {
   margin-bottom: 5px;
   width: 400px;
   margin-right: auto;
-  margin-left: auto;
+  margin-left: ;
 }
 div.pm_header {
-  background-color: #CCC;
+  background-color: #e3e4f6;
   padding-left: 20px;
 }
 div.pm_post {

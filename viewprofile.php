@@ -108,7 +108,8 @@ $viewer_id = $_SESSION['user_id'];
 
 //check for conversations with viewed user. Display pm template
 
-$sql1 = "SELECT * FROM pm WHERE receiver = '$viewer_id' AND sender = '$viewed_id' OR receiver = '$viewed_id' AND sender = '$viewer_id' ";
+$sql1 = "SELECT * FROM pm WHERE 
+      receiver = '$viewer_id' AND sender = '$viewed_id' OR receiver = '$viewed_id' AND sender = '$viewer_id' ";
 
 $data1 = mysqli_query($dbc, $sql1);
 
@@ -120,25 +121,29 @@ $hasreplies = $row1 ['hasreplies'];
 $subject = $row1 ['subject'];
 $receiver = $row1['receiver'];
 $sender = $row1['sender'];
-$debug = 1;
+//$parent = $row1['parent'];
+$debug = 0;
 if ($debug = 1) {
 echo "Has replies: $hasreplies<br>";
-echo "viewer_id: $viewer_id<br>";
-echo "Sender: $sender <br>";
+echo "Logged in username: $username<br>";
+echo "Logged in viewer_id: $viewer_id<br>";
 echo "receiver: $receiver <br>";
+echo "Sender: $sender <br>";
 echo "viewed_id: $viewed_id<br>";
 echo "sdelete: $sdelete<br>";
 echo "rdelete: $rdelete<br>";
+
 }
-$mail = "";
-if (isset($sender) && ($viewer_id == $sender )) {
-// View viewed user and veiwer user msg on viewd users profile
- echo "This code running";
-$sql = "SELECT * FROM pm WHERE 
-(receiver='$viewed_id' AND parent='x' AND rdelete='0') 
-OR 
-(sender='$viewer_id' AND sdelete='0' AND parent='x' AND hasreplies='0') 
-ORDER BY senttime DESC";
+
+
+// Determine if the Logged user and the viewed user 
+// have previous undeleted  conversations (on viewed user profile)
+$mail = "";// && ($viewer_id == $receiver && $rdelete = 0)
+if (isset($sender) && (isset($receiver)) && ($viewer_id == $sender) && ($sdelete == 0 ) || isset($sender) && (isset($receiver)) && ($viewer_id !== $receiver || $sender) && ($sdelete == 0 ) && ($viewer_id == $receiver && $rdelete = 0)) {
+// Display viewed user and veiwing user's msgs on viewed users profile
+ echo '<h4>Your conversation with this user:</h4>';
+ $sql = "SELECT * FROM pm WHERE (receiver='$viewed_id' AND sender='$viewer_id' AND parent='x' ) OR (sender='$viewed_id' AND receiver='$viewer_id' AND sdelete='0' AND parent='x' ) ORDER BY senttime DESC ";
+
 $query = mysqli_query($dbc, $sql);
 $statusnumrows = mysqli_num_rows($query);
 
@@ -166,9 +171,7 @@ if($statusnumrows > 0){
     $rread = $row["rread"];
     $sread = $row["sread"];
 
-if ($sender == $_SESSION['user_id']) {
-      $sender = $row["receiver"];
-    }
+
     $query1 = "SELECT user_id, username, first_name, last_name, gender, birthdate, city, state, picture FROM mismatch_user WHERE user_id = '" . $sender . "'";
     $data1 = mysqli_query($dbc, $query1);
     $row1 = mysqli_fetch_array($data1);
@@ -214,67 +217,9 @@ if ($sender == $_SESSION['user_id']) {
   }
 
 }
-
  echo $mail; 
 ?>
 
-<script language="javascript" type="text/javascript">
-function replyToPm(pmid,user,ta,btn,osender){ 
-  var data = (ta).value;
-  if(data == ""){
-    alert("Fill out the message please.");
-    return false;
-  }
-  get_id('<?php echo $rb; ?>').disabled = true;
-  var ajax = ajaxObj("POST", "php_parsers/pm_system.php");
-  ajax.onreadystatechange = function() {
-    if(ajaxReturn(ajax) == true) {
-      var datArray = ajax.responseText.split("|");
-      if(datArray[0] == "reply_ok"){
-        var rid = datArray[1];
-        data = data.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/n/g,"<br />").replace(/r/g,"<br />");
-        get_id("pm_"+pmid).innerHTML += '<p><b>Reply by you just now:</b><br />'+data+'</p>';
-        expand("pm_"+pmid);
-        get_id(btn).disabled = false;
-        get_id(ta).value = "";
-      } else {
-        alert(ajax.responseText);
-      }
-    }
-  }
-  ajax.send("action=pm_reply&pmid="+pmid+"&user="+user+"&data="+data+"&osender="+osender);
-}
-function deletePm(pmid,wrapperid,originator){
-  var conf = confirm(originator+"Press OK to confirm deletion of this message and its replies");
-  if(conf != true){
-    return false;
-  }
-  var ajax = ajaxObj("POST", "php_parsers/pm_system.php");
-  ajax.onreadystatechange = function() {
-    if(ajaxReturn(ajax) == true) {
-      if(ajax.responseText == "delete_ok"){
-        get_id(wrapperid).style.display = 'none';
-      } else {
-        alert(ajax.responseText);
-      }
-    }
-  }
-  ajax.send("action=delete_pm&pmid="+pmid+"&originator="+originator);
-}
-function markRead(pmid,originator){
-  var ajax = ajaxObj("POST", "php_parsers/pm_system.php");
-  ajax.onreadystatechange = function() {
-    if(ajaxReturn(ajax) == true) {
-      if(ajax.responseText == "read_ok"){
-        alert("Message has been marked as read");
-      } else {
-        alert(ajax.responseText);
-      }
-    }
-  }
-  ajax.send("action=mark_as_read&pmid="+pmid+"&originator="+originator);
-}
-</script>
 <?php
 }else{ 
   require_once('template_pm.php');
@@ -401,6 +346,16 @@ if (!isset($_GET['user_id']) || ($_SESSION['user_id'] == $_GET['user_id'])) {
 require_once('footer.php');
 
 ?>
+<meta charset="UTF-8">
+
 </div>
 </body> 
-
+<!--
+if (isset($sender) && (isset($receiver)) && ($viewer_id == $viewed_id) || (isset($sender) && (isset($receiver)) && $sender == $viewer_id)) {
+<!--
+$sql = "SELECT * FROM pm WHERE 
+(receiver='$viewer_id' AND parent='x' ) 
+OR 
+(sender='$viewer_id' AND sdelete='0' AND parent='x' ) 
+ORDER BY senttime DESC";
+-->

@@ -1,9 +1,6 @@
 function get_id(x){
   return document.getElementById(x);
 }
-
-
-//<script language="javascript" type="text/javascript">
 function replyToPm(pmid,user,ta,btn,osender){ 
   var data = get_id(ta).value;
   if(data == ""){
@@ -61,5 +58,3 @@ function markRead(pmid,originator){
   }
   ajax.send("action=mark_as_read&pmid="+pmid+"&originator="+originator);
 }
-
-//</script>

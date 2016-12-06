@@ -39,7 +39,7 @@ if($isOwner != "yes"){header("location: index.php");exit();}
 $sql = "SELECT * FROM pm WHERE 
 (receiver='$viewed_id' AND parent='x' AND rdelete='0') 
 OR 
-(sender='$viewed_id' AND sdelete='0' AND parent='x' AND hasreplies='1') 
+(sender='$viewed_id' AND sdelete='0' AND parent='x' AND hasreplies='0') 
 ORDER BY senttime DESC";
 $query = mysqli_query($dbc, $sql);
 $statusnumrows = mysqli_num_rows($query);

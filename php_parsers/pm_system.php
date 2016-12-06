@@ -105,6 +105,8 @@ if (isset($_POST['action']) && $_POST['action'] == "delete_pm"){
 		echo "id_missing";
 		exit();
 	}
+	
+		
 	$pmid = preg_replace('#[^0-9]#', '', $_POST['pmid']);
 	if(!isset($_POST['originator']) || $_POST['originator'] == ""){
 		mysqli_close($dbc);
@@ -116,10 +118,18 @@ if (isset($_POST['action']) && $_POST['action'] == "delete_pm"){
 $viewer_id = $_SESSION['user_id'];
 	if ($originator == $viewer_id) {
 		$updatedelete = mysqli_query($dbc, "UPDATE pm SET sdelete='1' WHERE id='$pmid' LIMIT 1");
+		//Delete from db where sender and receiver have both deleted msg 
+	
+			$delete_perm = mysqli_query($dbc, "DELETE FROM pm  WHERE rdelete='1' AND sdelete='1' ");
 		}
 	if ($originator != $viewer_id) {
+		//Delete from db where sender and receiver have both deleted msg 
+	
+			
 		$updatedelete = mysqli_query($dbc, "UPDATE pm SET rdelete='1' WHERE id='$pmid' LIMIT 1");
+		$delete_perm = mysqli_query($dbc, "DELETE FROM pm  WHERE rdelete='1' AND sdelete='1' ");
 		}
+		
 	mysqli_close($dbc);
 	echo "delete_ok";
 	exit();

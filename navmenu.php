@@ -12,7 +12,7 @@ if (isset($_SESSION['username'])) {
   echo ' &#9733; <a href="mymismatch.php"> My best match</a> ';
   echo ' &#9733; <a href="editprofile.php"> Edit Profile</a> ';
    echo ' &#9733;<a href="questionnaire.php"> Questionnaire</a>  ';
-  echo ' &#9733; <a href="Logout.php"> log out (' . $_SESSION['username'] . ')</a>';
+  echo ' &#9733; <a href="logout.php"> log out (' . $_SESSION['username'] . ')</a>';
   //Generate the notifications
   $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
   $sql = "SELECT id FROM pm WHERE (receiver='$viewer_id' AND parent='x' AND rdelete='0' AND rread='0')
@@ -30,7 +30,7 @@ if (isset($_SESSION['username'])) {
 
 }else{
    echo '&#10084; <a href="login.php">Login </a> ';
-  echo '&#10084; <a href="Signup.php">Sign up</a> ';
+  echo '&#10084; <a href="signup.php">Sign up</a> ';
 
 
 }

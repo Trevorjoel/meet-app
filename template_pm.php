@@ -13,7 +13,7 @@ $pm_ui = "";
 // Build ui carry the profile id, vistor name, pm subject and comment to js
 
 $isOwner = true;
-  $isFriend = "false";
+ $isFriend = "false";
 $ownerBlockViewer = "false";
 $viewerBlockOwner = "false";
 $viewer_id = $_SESSION['user_id'];
@@ -89,7 +89,20 @@ function statusMax(field, maxlimit) {
 
 </script>
 <?php
+$debug = 1;
+if ($debug == 1) {
+echo "Initiate conversation:";
+echo "Has replies: $hasreplies<br>";
+echo "Logged in username: $username<br>";
+echo "Logged in viewer_id: $viewer_id<br>";
+echo "receiver: $receiver <br>";
+echo "Sender: $sender <br>";
+echo "viewed_id: $viewed_id<br>";
+echo "sdelete: $sdelete<br>";
+echo "rdelete: $rdelete<br>";
+//echo "pm id: $pmid<br>";
 
+}
 ?>
 <div id="statusui">
   <?php echo $pm_ui; ?>

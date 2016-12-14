@@ -91,8 +91,9 @@ if ($sender == $_SESSION['user_id']) {
 		$mail .= '<div class="pm_header form-control"><a href="viewprofile.php?user_id='.$frm_id.'"><img class="friendpics img-circle" src="' . MM_UPLOADPATH . $profile_pic . '" class="img-circle" alt="Profile Picture" alt="'.$frm.'" title="'.$frm.'"></a><br /><b>Subject: </b>'.$subject.'<br /><br />';
 		// Add button for mark as read
 		$mail .= '<button class="btn btn-primary btn-sm" onclick="markRead('.$pmid.','.$sender.')">Mark As Read</button>';
+
 		// Add Delete button
-		$mail .= '<button class="btn btn-warning btn-sm" id="'.$btid2.'" onclick="deletePm('.$pmid.','.$wrap.','.$sender.')">Delete</button></div>';
+		$mail .= '<button class="btn btn-warning btn-sm" id="'.$btid2.'" onclick="deletePm('.$pmid.',\''.$wrap.'\','.$sender.')">Delete</button></div>';
 		$mail .= '<div class="" id="'.$pmid2.'">';//start expanding area
 		$mail .= '<div class="pm_post">From: '.$frm.' - '.$time.'<br />'.$message.'</div>';
 		
@@ -118,8 +119,32 @@ if ($sender == $_SESSION['user_id']) {
 		// Add reply textbox
 		$mail .= '<textarea class="form-control" id="'.$rt.'" width="100" placeholder="Reply..."></textarea><br />';
 		// Add reply button
-		$mail .= '<button class="form-control btn btn-primary btn-md" id="'.$rb.'" onclick="replyToPm('.$pmid.','.$viewer_id.','.$rt.','.$rb.','.$sender.')">Reply</button>';
-		$mail .= '</div>';
+		
+		 $mail .= '<button class="form-control btn btn-primary btn-md" id="'.$rb.'" onclick="replyToPm('.$pmid.','.$viewed_id.',\''.$rt.'\',\''.$rb.'\','.$sender.')">Reply</button>';
+    $mail .= '</div>';
+
+
+		//Message debug unit
+		 $debug = 1;
+if ($debug == 1) {
+//echo "Has replies: $hasreplies<br>";
+	echo "PM inbox:<br />";
+echo "Logged in username: $username<br>";
+echo "Logged in viewer_id: $viewer_id<br>";
+echo "receiver: $receiver <br>";
+echo "Sender: $sender <br>";
+echo "viewed_id: $viewed_id<br>";
+//echo "sdelete: $sdelete<br>";
+//echo "rdelete: $rdelete<br>";
+echo "pm id: $pmid<br>";
+echo "sender: $sender<br>";
+echo "rt: $rt<br>";
+echo "rb: $rb<br>";
+echo "frm: $frm<br>";
+//echo "pm_: $pm_<br>";
+
+
+}
 	}
 }
 ?>

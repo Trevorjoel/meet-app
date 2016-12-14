@@ -122,24 +122,14 @@ $subject = $row1 ['subject'];
 $receiver = $row1['receiver'];
 $sender = $row1['sender'];
 //$parent = $row1['parent'];
-$debug = 0;
-if ($debug = 1) {
-echo "Has replies: $hasreplies<br>";
-echo "Logged in username: $username<br>";
-echo "Logged in viewer_id: $viewer_id<br>";
-echo "receiver: $receiver <br>";
-echo "Sender: $sender <br>";
-echo "viewed_id: $viewed_id<br>";
-echo "sdelete: $sdelete<br>";
-echo "rdelete: $rdelete<br>";
 
-}
 
 
 // Determine if the Logged user and the viewed user 
 // have previous undeleted  conversations (on viewed user profile)
 $mail = "";// && ($viewer_id == $receiver && $rdelete = 0)
-if (isset($sender) && (isset($receiver)) && ($viewer_id == $sender) && ($sdelete == 0 ) || isset($sender) && (isset($receiver)) && ($viewer_id !== $receiver || $sender) && ($sdelete == 0 ) && ($viewer_id == $receiver && $rdelete = 0)) {
+if (isset($sender) && (isset($receiver)) 
+  && ($viewer_id == $receiver || $sender) ) {
 // Display viewed user and veiwing user's msgs on viewed users profile
  echo '<h4>Your conversation with this user:</h4>';
  $sql = "SELECT * FROM pm WHERE (receiver='$viewed_id' AND sender='$viewer_id' AND parent='x' ) OR (sender='$viewed_id' AND receiver='$viewer_id' AND sdelete='0' AND parent='x' ) ORDER BY senttime DESC ";
@@ -171,6 +161,23 @@ if($statusnumrows > 0){
     $rread = $row["rread"];
     $sread = $row["sread"];
 
+//Message DEBUG unit
+
+  $debug = 1;
+
+if ($debug == 1) {
+  echo "View others profile, our messages:<br />";
+echo "Has replies: $hasreplies<br>";
+echo "Logged in username: $username<br>";
+echo "Logged in viewer_id: $viewer_id<br>";
+echo "receiver: $receiver <br>";
+echo "Sender: $sender <br>";
+echo "viewed_id: $viewed_id<br>";
+//echo "sdelete: $sdelete<br>";
+//echo "rdelete: $rdelete<br>";
+echo "pm id: $pmid<br>";
+//echo "pm_: $pm_<br>";
+}
 
     $query1 = "SELECT user_id, username, first_name, last_name, gender, birthdate, city, state, picture FROM mismatch_user WHERE user_id = '" . $sender . "'";
     $data1 = mysqli_query($dbc, $query1);
@@ -184,11 +191,12 @@ if($statusnumrows > 0){
     $mail .= '<div id="'.$wrap.'" class="pm_wrap form-group">';
     $mail .= '<div class="pm_header form-control"><a href="viewprofile.php?user_id='.$frm_id.'"><img class="friendpics img-circle" src="' . MM_UPLOADPATH . $profile_pic . '" class="img-circle" alt="Profile Picture" alt="'.$frm.'" title="'.$frm.'"></a><br /><b>Subject: </b>'.$subject.'<br /><br />';
     // Add button for mark as read
-    $mail .= '<button class="btn btn-primary btn-sm" onclick="markRead('.$pmid.','.$sender.')">Mark As Read</button>';
+    $mail .= '<button class="btn btn-primary btn-sm" onclick="markRead('.$pmid.','.$viewer_id.')">Mark As Read</button>';
     // Add Delete button
-    $mail .= '<button class="btn btn-warning btn-sm" id="'.$btid2.'" onclick="deletePm('.$pmid.','.$wrap.','.$sender.')">Delete</button></div>';
-    $mail .= '<div class="" id="'.$pmid2.'">';//start expanding area
-    $mail .= '<div class="pm_post">From: '.$frm.' - '.$time.'<br />'.$message.'</div>';
+    $mail .= '<button class="btn btn-warning btn-sm" id="'.$btid2.'" onclick="deletePm('.$pmid.','.$wrap.','.$viewer_id.')">Delete</button></div>';
+    $mail .= '<div class="" id="$pmid2">';//start expanding area
+    $mail .= '<div class="pm_post">From: '.$frm_id.' - '.$time.'<br />'.$message.'</div>';
+
     
     // Gather up any replies to the parent pm's
     $pm_replies = "";
@@ -211,8 +219,8 @@ if($statusnumrows > 0){
     $mail .= '</div>';
     // Add reply textbox
     $mail .= '<textarea class="form-control" id="'.$rt.'" width="100" placeholder="Reply..."></textarea><br />';
-    // Add reply button
-    $mail .= '<button class="form-control btn btn-primary btn-md" id="'.$rb.'" onclick="replyToPm('.$pmid.','.$viewer_id.','.$rt.','.$rb.','.$sender.')">Reply</button>';
+    // Add reply button '.$pmid.','.$sender.',\''.$rt.'\',\''.$rb.'\','.$viewer_id.'
+   $mail .= '<button class="form-control btn btn-primary btn-md" id="'.$rb.'" onclick="replyToPm('.$pmid.','.$viewed_id.',\''.$rt.'\',\''.$rb.'\','.$sender.')">Reply</button>';
     $mail .= '</div>';
   }
 

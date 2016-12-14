@@ -123,8 +123,7 @@ $viewer_id = $_SESSION['user_id'];
 			$delete_perm = mysqli_query($dbc, "DELETE FROM pm  WHERE rdelete='1' AND sdelete='1' ");
 		}
 	if ($originator != $viewer_id) {
-		//Delete from db where sender and receiver have both deleted msg 
-	
+		//Delete from db where sender and receiver have both deleted msg 	
 			
 		$updatedelete = mysqli_query($dbc, "UPDATE pm SET rdelete='1' WHERE id='$pmid' LIMIT 1");
 		$delete_perm = mysqli_query($dbc, "DELETE FROM pm  WHERE rdelete='1' AND sdelete='1' ");

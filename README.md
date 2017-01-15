@@ -23,9 +23,13 @@ When you go to the same conversation (You can see your conversation on the viewe
 Error: Uncaught TypeError: Cannot read property 'innerHTML' of null
 File: main.js Line 19 
 and viewprofile.php
+
 Recreate error:
+
 Sign in (user1), send a user2 a message. Logout sign in as user2 and reply. Login as user1 go to user2's profile and attempt to send another message... error occurs
 
-3) When you “initiate” conversation (When you go to another users page there is a different form, found in template_pm.php) ajax should return the conversation form without page load or simply return this variable <?php echo $pm_ui; ?>.
+3) When you “initiate” conversation (Go to an unmessaged users page, there is a different form, found in template_pm.php) When you post an "initial" message ajax should return the conversation form (the one you see after sending message) asynchronously.
+Recreate error (not an error, need to create function):
+Sign in, find a user you have not messaged send message.
 4)Mark as read does not remove the Message notification (blue speech bubble) asynchronously from the header. Header.php file
 

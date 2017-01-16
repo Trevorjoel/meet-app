@@ -17,6 +17,7 @@ function replyToPm(pmid,user,ta,btn,osender){
         var rid = datArray[1];
         data = data.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/n/g,"<br />").replace(/r/g,"<br />");
         get_id("pm_"+pmid).innerHTML += '<p><b>Reply by you just now:</b><br />'+data+'</p>';
+
         //expand("pm_"+pmid);
         get_id(btn).disabled = false;
         get_id(ta).value = "";
@@ -36,7 +37,7 @@ function deletePm(pmid,wrapperid,originator){
   var ajax = ajaxObj("POST", "php_parsers/pm_system.php");
   ajax.onreadystatechange = function() {
     if(ajaxReturn(ajax) == true) {
-      console.log('wrapperid='+wrapperid);
+      
       if(ajax.responseText == "delete_ok"){
         get_id(wrapperid).style.display = 'none';
       } else {

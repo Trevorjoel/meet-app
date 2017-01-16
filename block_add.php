@@ -3,7 +3,7 @@
 require_once('startsession.php');
 require_once('appvars.php');
 require_once('connectvars.php');
- if (!isset($_GET['user_id']) || ($_GET['user_id'] )  == ($_SESSION['user_id'])) {
+if (!isset($_GET['user_id']) || ($_GET['user_id'] )  == ($_SESSION['user_id']) ){
 
  }else{
 $isOwner = "";
@@ -15,7 +15,8 @@ if (isset ($_GET['user_id'])) {
   $viewed_id = $_GET['user_id'];
 }
   
-$friend_check = "SELECT id FROM friends WHERE user1='$viewed_id' AND user2='$viewer_id' OR  user1='$viewer_id' AND user2='$viewed_id' AND accepted='1' LIMIT 1";
+$friend_check = "SELECT id FROM friends WHERE user1='$viewed_id' AND user2='$viewer_id' OR  user1='$viewer_id' AND user2='$viewed_id' 
+AND accepted='1' LIMIT 1";
     
    if(mysqli_num_rows(mysqli_query($dbc, $friend_check)) > 0){
         $isFriend = true;

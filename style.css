@@ -44,9 +44,14 @@ background-color: #e3e4f6;
 div.pm_wrap {
   border: 1px solid #333;
   margin-bottom: 5px;
-  width: 400px;
+  width: 500px;
   margin-right: auto;
   margin-left: ;
+  
+}
+.msg_bod{
+  max-height: 300px;
+    overflow: scroll;
 }
 div.pm_header {
   background-color: #e3e4f6;

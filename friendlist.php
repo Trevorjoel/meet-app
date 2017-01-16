@@ -1,7 +1,3 @@
-
-
-    
-
 <?php
 require_once('startsession.php');
 
@@ -10,11 +6,11 @@ require_once('startsession.php');
 if (!isset($_GET['user_id']) || ($_SESSION['user_id'] == $_GET['user_id'])) {
     $viewed_id = $_SESSION['user_id'];
     $viewed = $_SESSION['username'];
-    }
-    if (!isset($_GET['user_id']) || ($_SESSION['user_id'] == $_GET['user_id'])) {
+}
+if (!isset($_GET['user_id']) || ($_SESSION['user_id'] == $_GET['user_id'])) {
         print '<div class="box-shade box-width"><br><h4>Your friends:</h4></div>';
-    }else{
-print "<div><br><h4>$viewed's friends:</h4></div>"; 
+} else {
+    print "<div><br><h4>$viewed's friends:</h4></div>";
 }
 
 $friendsHTML = '';
@@ -23,7 +19,7 @@ $sql = "SELECT COUNT(id) FROM friends WHERE user1='$viewed_id' AND accepted='1' 
 $query = mysqli_query($dbc, $sql);
 $query_count = mysqli_fetch_row($query);
 $friend_count = $query_count[0];
-if($friend_count < 1){
+if ($friend_count < 1) {
     $friendsHTML = $viewed." has no friends yet";
 } else {
     $max = 18;
@@ -40,18 +36,17 @@ if($friend_count < 1){
     $query = mysqli_query($dbc, $sql);
     while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
         array_push($all_friends, $row["user2"]);
-
     }
 
     $friendArrayCount = count($all_friends);
-    if($friendArrayCount > $max){
+    if ($friendArrayCount > $max ){
         array_splice($all_friends, $max);
     }
     if($friend_count > $max){
         $friends_view_all_link = '<a href="view_friends.php?u='.$viewed_id.'">view all</a>';
 
     }
-
+    
     $orLogic = '';
 
     foreach($all_friends as $key => $user){
@@ -71,18 +66,15 @@ if($friend_count < 1){
         $friend_avatar = $row["picture"];
         if($friend_avatar != ""){
             $friendsHTML .= 
-        '<a href="viewprofile.php?user_id='.$friend_id.'"><img class="friendpics img-circle" src="' . MM_UPLOADPATH . $row['picture'] . '" class="img-circle" alt="Profile Picture" alt="'.$friend_username.'" title="'.$friend_username.'"></a>';
+            '<a href="viewprofile.php?user_id='.$friend_id.'"><img class="friendpics img-circle" src="' . MM_UPLOADPATH . $row['picture'] . '" class="img-circle" alt="Profile Picture" alt="'.$friend_username.'" title="'.$friend_username.'"></a>';
 
 
         } else {
             $friendsHTML .= 
         '<a href="viewprofile.php?user_id='.$friend_id.'"><img class="friendpics" src="images/nopic.jpg" class="friendpics img-circle" alt="Profile Picture" alt="'.$friend_username.'" title="'.$friend_username.'"></a>';
 
-        }
-        
-        
+        }               
     }
-
 }
 
 

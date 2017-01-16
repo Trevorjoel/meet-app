@@ -14,7 +14,7 @@ Conversations remain in database until both users delete it but the conversation
 Code in question: viewprofile.php Line: 121
 
 JS/Ajax/JQ
-1) Needs an expand and retract function on the message boxes to just show the last few messages. 
+1) Needs an expand and retract function on the message boxes to just show the last few messages. // COMPLETED //
 
 2)When you are messaging from your own profile http://alternicom.com/meet-app/viewprofile.php 
 the ajax function works correctly.

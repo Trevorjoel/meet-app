@@ -119,7 +119,7 @@ $sql1 = "SELECT * FROM pm WHERE
 // have previous undeleted  conversations (on viewed user profile)
 $mail = "";// && ($viewer_id == $receiver && $rdelete = 0)
 if (isset($sender) && (isset($receiver))
-  && ($viewer_id == $receiver || $sender)) {
+  && ($viewer_id == $receiver || $sender && $sdelete == 0)) {
     // Display viewed user and veiwing user's msgs on viewed users profile
  echo '<h4>Your conversation with this user:</h4>';
     $sql = "SELECT * FROM pm WHERE (receiver='$viewed_id' AND sender='$viewer_id' AND parent='x' ) OR (sender='$viewed_id' AND receiver='$viewer_id' AND sdelete='0' AND parent='x' ) ORDER BY senttime DESC ";
@@ -163,8 +163,8 @@ if ($statusnumrows > 0) {
             echo "receiver: $receiver <br>";
             echo "Sender: $sender <br>";
             echo "viewed_id: $viewed_id<br>";
-//echo "sdelete: $sdelete<br>";
-//echo "rdelete: $rdelete<br>";
+echo "sdelete: $sdelete<br>";
+echo "rdelete: $rdelete<br>";
 echo "pm id: $pmid<br>";
 //echo "pm_: $pm_<br>";
         }

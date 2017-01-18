@@ -2,13 +2,17 @@
 Bugs with meet app
 http://alternicom.com/meet-app/
 You can login debug  with these users: 
+
 Username: user1 
 password: user1
 Username: user2
 Password: user2
+
 // TO: TWISTEDWEB 123 //
 Hi mate, I'm an amateur web dev, been at it 1 year.
-I'm putting together a portfolio and including various projects in it. Basically I have a few projects incomplete/messy and the closing date for an application for a trainee position is 21 th Feb. Need help.
+I'm putting together a portfolio and including various projects in it. 
+Basically I have a few projects incomplete/messy and the closing date for an application for a trainee position is 21 th Feb.
+Need help.
 
 The project I would like you to tidy is a simple social-media app that I have thrown together from various tutorials without a framework. My approach has been get it to run and move to the next challenge so this is one of a few, incomplete/ugly projects.
 

@@ -10,11 +10,19 @@ Username: Jenny Pass: jenny
 
 PHP/SQL/Db
 
-1) When one user deletes conversation it still shows on the profile of the user who didn’t delete it.
-Conversations remain in database until both users delete it but the conversation isn’t revived when non deleted user messages again. How to revive a conversation?? 
-Suggestion: New column in pm table with deleted time?? if conversation has a new message later than the deleted time then show conversation.
-Code in question: viewprofile.php Line: 121
-
+1)
+Conversations remain in database until both users delete it but the conversation isn’t revived when  user messages again. How to revive a conversation after only 1 user has deleted it?? 
+Suggestion: New column in pm table with deleted time?? if conversation has a new message later than the deleted time then show conversation up again.
+Code in question: viewprofile.php Line: 121 (I think).
+RECREATE ERROR:
+Note: Messages can be seen when user(viewer = logged in user) is viewing their (own profile) and when looking at the user they have messaged(viewed profile). 
+Do this:
+User1 send message to user2. (all good)
+User2 delete message.
+Now message has been deleted from user2's profile but user2 can go to view user1 profile and still see their conversation) (ALL good).
+User1 send user2 a new message.
+The conversation does not revive on touser2's own profile page.
+Thought: I added a delete time to the database for messages and I need to add a query to check if the new message is later than the parent message.
 JS/Ajax/JQ
 1) Needs an expand and retract function on the message boxes to just show the last few messages. // COMPLETED //
 

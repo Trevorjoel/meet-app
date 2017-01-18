@@ -2,11 +2,20 @@
 Bugs with meet app
 http://alternicom.com/meet-app/
 You can login debug  with these users: 
-Username: Trevor 
-password: Garrity
-Username: 12345
-Password: 12345
-Username: Jenny Pass: jenny
+Username: user1 
+password: user1
+Username: user2
+Password: user2
+// TO: TWISTEDWEB 123 //
+Hi mate, I'm an amateur web dev, been at it 1 year.
+I'm putting together a portfolio and including various projects in it. Basically I have a few projects incomplete/messy and the closing date for an application for a trainee position is 21 th Feb. Need help.
+
+The project I would like you to tidy is a simple social-media app that I have thrown together from various tutorials without a framework. My approach has been get it to run and move to the next challenge so this is one of a few, incomplete/ugly projects.
+
+What you might be looking out for and fixing would be variables declared multiple times, input validation and other simple security issues. The possibility of applying simple functions  for some repetitive tasks and anything in PHP and ajax (I'm really not good at JS/AJAX) The delete button is not working on the server but ok with XAMPP localhost I think its an AJAX function. 
+
+What I don't want you to do is mis-represent my abilities, rewrite or go much further on developing the app for me(The app is right at the edge of my abilities I would get it done but the time is the factor). Just want to tidy it up as it is. I will style it with bootstrap.
+
 
 PHP/SQL/Db
 
@@ -23,8 +32,10 @@ Now message has been deleted from user2's profile but user2 can go to view user1
 User1 send user2 a new message.
 The conversation does not revive on touser2's own profile page.
 Thought: I added a delete time to the database for messages and I need to add a query to check if the new message is later than the parent message.
+
 JS/Ajax/JQ
-1) Needs an expand and retract function on the message boxes to just show the last few messages. // COMPLETED //
+1)Message delete button not working.
+
 
 2)When you are messaging from your own profile http://alternicom.com/meet-app/viewprofile.php 
 the ajax function works correctly.
@@ -43,3 +54,4 @@ Recreate error (not an error, need to create function):
 Sign in, find a user you have not messaged send message.
 4)Mark as read does not remove the Message notification (blue speech bubble) asynchronously from the header. Header.php file
 
+Tell me what you think what you might charge. I can be more specific about particular problems, but you get the idea? 

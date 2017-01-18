@@ -119,7 +119,7 @@ $sql1 = "SELECT * FROM pm WHERE
 // have previous undeleted  conversations (on viewed user profile)
 $mail = "";// && ($viewer_id == $receiver && $rdelete = 0)
 if (isset($sender) && (isset($receiver))
-  && ($viewer_id == $receiver || $sender && $sdelete == 0)) {
+  && ($viewer_id == $sender || $sender && $sdelete == 0)) {
     // Display viewed user and veiwing user's msgs on viewed users profile
  echo '<h4>Your conversation with this user:</h4>';
     $sql = "SELECT * FROM pm WHERE (receiver='$viewed_id' AND sender='$viewer_id' AND parent='x' ) OR (sender='$viewed_id' AND receiver='$viewer_id' AND sdelete='0' AND parent='x' ) ORDER BY senttime DESC ";
@@ -151,6 +151,57 @@ if ($statusnumrows > 0) {
         $rread = $row["rread"];
         $sread = $row["sread"];
 
+
+
+        $query1 = "SELECT user_id, username, first_name, last_name, gender, birthdate, city, state, picture FROM mismatch_user WHERE user_id = '" . $sender . "'";
+        $data1 = mysqli_query($dbc, $query1);
+        $row1 = mysqli_fetch_array($data1);
+        $frm = $row1['username'];
+        $frm_id = $row1['user_id'];
+        $profile_pic = $row1['picture'];
+  
+        $mail = '';
+    // Start to build our list of parent pm's
+    $mail .= '<div id="'.$wrap.'" class="pm_wrap form-group">';
+        $mail .= '<div class="pm_header form-control"><a href="viewprofile.php?user_id='.$frm_id.'"><img class="friendpics img-circle" src="' . MM_UPLOADPATH . $profile_pic . '" class="img-circle" alt="Profile Picture" alt="'.$frm.'" title="'.$frm.'"></a><br /><b>Subject: </b>'.$subject.'<br /><br />'; ?>
+          <!-- JQ for the show/hide messages -->
+        <script type="text/javascript">
+$(document).ready(function(){
+    $("#hide<?php echo $frm_id; ?>").click(function(){
+        $("#<?php echo $pmid2; ?>").hide('slow');
+    });
+    $("#show<?php echo $frm_id ?>").click(function(){
+        $("#<?php echo $pmid2; ?>").show('slow');
+    });
+});
+</script>
+
+<?php
+
+    // Add button for mark as read
+    $mail .= '<button class="btn btn-primary btn-sm" onclick="markRead('.$pmid.','.$viewer_id.')">Mark As Read</button>';
+        $mail .= '<button id="hide'. $frm_id .'" class="btn  btn-sm" style="float:right">Hide</button>
+<button id="show'. $frm_id.'" class="btn btn-primary btn-sm" style="float:right">Show</button>';
+    // Add Delete button
+    $mail .= '<button class="btn btn-warning btn-sm" id="'.$btid2.'" onclick="deletePm('.$pmid.','.$wrap.','.$viewer_id.')">Delete</button></div>';
+        $mail .= '<div style="display:none;" class="msg_bod" id="'.$pmid2.'" >';
+        //start expanding area
+    $mail .= '<div class="pm_post">From: '.$frm_id.' - '.$time.'<br />'.$message.'</div>';
+
+    
+    // Gather up any replies to the parent pm's
+    $pm_replies = "";
+        $query_replies = mysqli_query($dbc, "SELECT sender, message, senttime, deletetime FROM pm WHERE parent='$pmid' ORDER BY senttime ASC");
+        $replynumrows = mysqli_num_rows($query_replies);
+        if ($replynumrows > 0) {
+            while ($row2 = mysqli_fetch_array($query_replies, MYSQLI_ASSOC)) {
+                $rsender = $row2["sender"];
+                $reply = $row2["message"];
+                $time2 = $row2["senttime"];
+                $deletetime = $row2["deletetime"];
+                $mail .= '<div class ="pm_post ">Your reply: on '.$time2.'<br />'.$reply.'<br /></div>';
+            }
+        }
 //Message DEBUG unit
 
   $debug = 1;
@@ -163,60 +214,12 @@ if ($statusnumrows > 0) {
             echo "receiver: $receiver <br>";
             echo "Sender: $sender <br>";
             echo "viewed_id: $viewed_id<br>";
-echo "sdelete: $sdelete<br>";
-echo "rdelete: $rdelete<br>";
-echo "pm id: $pmid<br>";
+            echo "sdelete: $sdelete<br>";
+            echo "rdelete: $rdelete<br>";
+            echo "pm id: $pmid<br>";
+            echo "deletetime: $deletetime<br>";
 //echo "pm_: $pm_<br>";
         }
-
-        $query1 = "SELECT user_id, username, first_name, last_name, gender, birthdate, city, state, picture FROM mismatch_user WHERE user_id = '" . $sender . "'";
-        $data1 = mysqli_query($dbc, $query1);
-        $row1 = mysqli_fetch_array($data1);
-        $frm = $row1['username'];
-        $frm_id = $row1['user_id'];
-        $profile_pic = $row1['picture'];
-  
-        $mail = '';
-    // Start to build our list of parent pm's
-    $mail .= '<div id="'.$wrap.'" class="pm_wrap form-group">';
-        $mail .= '<div class="pm_header form-control"><a href="viewprofile.php?user_id='.$frm_id.'"><img class="friendpics img-circle" src="' . MM_UPLOADPATH . $profile_pic . '" class="img-circle" alt="Profile Picture" alt="'.$frm.'" title="'.$frm.'"></a><br /><b>Subject: </b>'.$subject.'<br /><br />';
-        $mail .= '<button id="hide" class="btn  btn-sm " style="float:right">Hide</button>
-           <button id="show" class="btn btn-primary btn-sm " style="float:right">Show</button>';
-          ?> <script type="text/javascript">
-$(document).ready(function(){
-    $("#hide").click(function(){
-        $(".<?php echo $frm_id; ?>").hide('slow');
-    });
-    $("#show").click(function(){
-        $(".<?php echo $frm_id; ?>").show('slow');
-    });
-});
-</script>
-
-<?php
-
-    // Add button for mark as read
-    $mail .= '<button class="btn btn-primary btn-sm" onclick="markRead('.$pmid.','.$viewer_id.')">Mark As Read</button>';
-    // Add Delete button
-    $mail .= '<button class="btn btn-warning btn-sm" id="'.$btid2.'" onclick="deletePm('.$pmid.','.$wrap.','.$viewer_id.')">Delete</button></div>';
-        $mail .= '<div style="display:none;" class="'.$frm_id.'" id="$pmid2" >';
-        //start expanding area
-    $mail .= '<div class="pm_post">From: '.$frm_id.' - '.$time.'<br />'.$message.'</div>';
-
-    
-    // Gather up any replies to the parent pm's
-    $pm_replies = "";
-        $query_replies = mysqli_query($dbc, "SELECT sender, message, senttime FROM pm WHERE parent='$pmid' ORDER BY senttime ASC");
-        $replynumrows = mysqli_num_rows($query_replies);
-        if ($replynumrows > 0) {
-            while ($row2 = mysqli_fetch_array($query_replies, MYSQLI_ASSOC)) {
-                $rsender = $row2["sender"];
-                $reply = $row2["message"];
-                $time2 = $row2["senttime"];
-                $mail .= '<div class ="pm_post ">Your reply: on '.$time2.'<br />'.$reply.'<br /></div>';
-            }
-        }
-
 
     // Each parent and child is now listed
     $mail .= '</div>';

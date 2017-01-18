@@ -77,7 +77,7 @@ if (isset($_POST['action']) && $_POST['action'] == "pm_reply") {
     $row = mysqli_fetch_row($query);
     if ($row[0] < 1) {
         mysqli_close($dbc);
-        echo "account_no_exist";
+        echo "account does not exist";
         exit();
     }
     // Insert the pm reply post into the database now

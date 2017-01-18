@@ -44,15 +44,17 @@ background-color: #e3e4f6;
 div.pm_wrap {
   border: 1px solid #333;
   margin-bottom: 5px;
-  width: 500px;
+  width: 380px;
   margin-right: auto;
   margin-left: ;
-  
+  height: auto;
 }
-.msg_bod{
-  max-height: 300px;
-    overflow: scroll;
+
+div.msg_bod{
+  height:200px;
+  overflow:scroll;
 }
+
 div.pm_header {
   background-color: #e3e4f6;
   padding-left: 20px;
@@ -61,6 +63,8 @@ div.pm_post {
   margin-top: 10px;
   padding-left: 20px;
 }
+
+
 /*
 table, tr, td {
      border: 1px solid black;

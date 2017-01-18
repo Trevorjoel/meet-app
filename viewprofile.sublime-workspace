@@ -1,0 +1,1303 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"delete",
+				"deletetime"
+			],
+			[
+				"delet",
+				"deletetime"
+			],
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"pm",
+				"pmid2"
+			],
+			[
+				"mysqli",
+				"mysqli_query"
+			],
+			[
+				"pmid",
+				"pmid2"
+			],
+			[
+				"sc",
+				"script\tTag"
+			],
+			[
+				"Max",
+				"max-height"
+			],
+			[
+				"margi",
+				"margin"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"border",
+				"border-radius"
+			],
+			[
+				"mag",
+				"margin-bottom"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"hr",
+				"hr\tTag"
+			],
+			[
+				"ma",
+				"margin-left"
+			],
+			[
+				"padd",
+				"padding-bottom"
+			],
+			[
+				"a",
+				"auto"
+			],
+			[
+				"c",
+				"center"
+			],
+			[
+				"padding",
+				"padding"
+			],
+			[
+				"ol",
+				"oldMan"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"en",
+				"endforeach"
+			],
+			[
+				"st",
+				"strong\tTag"
+			],
+			[
+				"ul",
+				"ul\tTag"
+			],
+			[
+				"uc",
+				"ucwords"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"li",
+				"li\tTag"
+			],
+			[
+				"animal",
+				"animal"
+			],
+			[
+				"ani",
+				"animals"
+			],
+			[
+				"for",
+				"foreach\tforeach …"
+			],
+			[
+				"sty",
+				"style\tTag"
+			],
+			[
+				"div",
+				"div\tTag"
+			],
+			[
+				"htm",
+				"html5\tSimple HTML5 Boilerplate"
+			],
+			[
+				"br",
+				"br\tTag"
+			],
+			[
+				"b",
+				"button\t<button>"
+			],
+			[
+				"bu",
+				"button\t<button>"
+			],
+			[
+				"di",
+				"div\tTag"
+			],
+			[
+				"ht",
+				"html\thtml"
+			],
+			[
+				"p",
+				"p\tTag"
+			],
+			[
+				"hom",
+				"homestead"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"re",
+				"receiver"
+			],
+			[
+				"user",
+				"username"
+			],
+			[
+				"send",
+				"sender"
+			],
+			[
+				"vie",
+				"viewer_id"
+			],
+			[
+				"viewed",
+				"viewed_id"
+			],
+			[
+				"template",
+				"template_pm"
+			],
+			[
+				"_",
+				"_GET"
+			],
+			[
+				"sub",
+				"subject"
+			],
+			[
+				"has",
+				"hasreplies"
+			],
+			[
+				"frm",
+				"frm_id"
+			],
+			[
+				"pro",
+				"profile_pic"
+			],
+			[
+				"is",
+				"isOwner"
+			],
+			[
+				"frie",
+				"friend_count"
+			],
+			[
+				"friend",
+				"friend_icon"
+			],
+			[
+				"friend_",
+				"friend_count"
+			],
+			[
+				"viewe",
+				"viewerBlockOwner"
+			],
+			[
+				"vi",
+				"viewer_id"
+			],
+			[
+				"Viewer",
+				"viewer_id"
+			],
+			[
+				"thu",
+				"thumbquery"
+			],
+			[
+				"user1",
+				"user1pic"
+			],
+			[
+				"thumb",
+				"thumbquery"
+			],
+			[
+				"thub",
+				"thumbquery"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"frind",
+				"friend_count"
+			],
+			[
+				"All",
+				"all_friends"
+			],
+			[
+				"da",
+				"data"
+			],
+			[
+				"friem",
+				"friendsHTML"
+			],
+			[
+				"pi",
+				"picture\t<picture>"
+			],
+			[
+				"view",
+				"viewed_id"
+			],
+			[
+				"viewer",
+				"viewer_id"
+			],
+			[
+				"all",
+				"all_friends"
+			],
+			[
+				"query",
+				"query_count"
+			],
+			[
+				"friends",
+				"friendsHTML"
+			],
+			[
+				"exist",
+				"exist_count"
+			],
+			[
+				"owne",
+				"ownerBlockViewer"
+			],
+			[
+				"own",
+				"ownerBlockViewer"
+			],
+			[
+				"inn",
+				"innerHTML"
+			],
+			[
+				"get",
+				"get_id"
+			],
+			[
+				"bl",
+				"block_button"
+			],
+			[
+				"blo",
+				"block_check1"
+			],
+			[
+				"fri",
+				"friend_check"
+			],
+			[
+				"res",
+				"resized_"
+			],
+			[
+				"target",
+				"target_file"
+			],
+			[
+				"file",
+				"fileName"
+			],
+			[
+				"new",
+				"new_picture"
+			],
+			[
+				"na",
+				"nationality"
+			],
+			[
+				"strip",
+				"strip_tags"
+			],
+			[
+				"cat",
+				"mismatch_categories"
+			],
+			[
+				"car",
+				"category_totals"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"category",
+				"category_name"
+			],
+			[
+				"prin",
+				"print_r"
+			],
+			[
+				"my",
+				"mysql_close"
+			],
+			[
+				"row",
+				"row2"
+			],
+			[
+				"data",
+				"data2"
+			],
+			[
+				"mis",
+				"mismatch_topic"
+			],
+			[
+				"mysqli_fetch",
+				"mysqli_fetch_array"
+			],
+			[
+				"response",
+				"response_id"
+			],
+			[
+				"top",
+				"topic_id"
+			],
+			[
+				"mismatch",
+				"mismatch_response"
+			],
+			[
+				"topic",
+				"topic_id"
+			],
+			[
+				"sessio",
+				"session_name"
+			],
+			[
+				"session_",
+				"session_destroy"
+			],
+			[
+				"user_",
+				"user_id"
+			],
+			[
+				"sessi",
+				"session_start"
+			],
+			[
+				"text",
+				"text_body"
+			],
+			[
+				"old",
+				"old_picture"
+			],
+			[
+				"erro",
+				"error_msg"
+			],
+			[
+				"set",
+				"setcookie"
+			],
+			[
+				"email",
+				"email_list"
+			],
+			[
+				"bus",
+				"bus_name"
+			],
+			[
+				"form",
+				"form_dissapear"
+			],
+			[
+				"mys",
+				"mysql_query"
+			],
+			[
+				"out",
+				"output_form"
+			],
+			[
+				"output",
+				"output_error"
+			],
+			[
+				"mar",
+				"marketplace_uploads"
+			],
+			[
+				"firs",
+				"first_name"
+			],
+			[
+				"is_n",
+				"is_numeric"
+			],
+			[
+				"approve",
+				"approvescore"
+			],
+			[
+				"req",
+				"require_once"
+			],
+			[
+				"PHP",
+				"PHP_AUTH_PW"
+			],
+			[
+				"head",
+				"header"
+			],
+			[
+				"siz",
+				"size"
+			],
+			[
+				"scr",
+				"screenshot_size"
+			],
+			[
+				"els",
+				"else"
+			],
+			[
+				"tmp",
+				"tmp_name"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "viewprofile.php",
+			"settings":
+			{
+				"buffer_size": 14732,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "style.css",
+			"settings":
+			{
+				"buffer_size": 900,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "header.php",
+			"settings":
+			{
+				"buffer_size": 1131,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "navmenu.php",
+			"settings":
+			{
+				"buffer_size": 2556,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/users/trev/appdata/local/temp/sublime-sftp-browse-1484607369/server/var/www/html/meet-app/style.css",
+			"settings":
+			{
+				"buffer_size": 900,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "<div id=\"notesBox\"><h2>Notifications</h2></div>\n<div align:left;>\n<?php\nrequire_once('startsession.php');\nrequire_once('appvars.php');\nrequire_once('connectvars.php');\nrequire_once('php_functions.php');\nrequire_once('header.php');\n\n        \necho \"This is file pm_inbox.php<br />\";\n// Initialize any variables that the page might echo\n$viewer_id = $_SESSION['user_id'];\n$mail = \"\";\n// Make sure the _GET username is set, and sanitize it\nif (isset($_SESSION[\"user_id\"])) {\n    $viewed_id = preg_replace('#[^a-z0-9]#i', '', $_SESSION['user_id']);\n} else {\n}\n// Select the member from the users table\n$sql = \"SELECT * FROM mismatch_user WHERE user_id='$viewed_id' AND activated='1' LIMIT 1\";\n$user_query = mysqli_query($dbc, $sql);\n\n// Now make sure that user exists in the table\n$numrows = mysqli_num_rows($user_query);\nif ($numrows < 1) {\n    echo \"That user does not exist or is not yet activated, press back\";\n    exit();\n}\n\n// Check to see if the viewer is the account owner\n$isOwner = \"no\";\nif ($viewed_id == $_SESSION['user_id']) {\n    $isOwner = \"yes\";\n}\nif ($isOwner != \"yes\") {\n    header(\"location: index.php\");\n\n    exit();\n}\n// Get list of parent pm's not deleted\n$sql = \"SELECT * FROM pm WHERE \n(receiver='$viewed_id' AND parent='x' AND rdelete='0' AND hasreplies='0') \nOR\n(receiver='$viewed_id' AND parent='x' AND rdelete='0' AND hasreplies='1') \nOR \n(sender='$viewed_id' AND sdelete='0' AND parent='x' AND hasreplies='1') \nOR\n(sender='$viewer_id' AND parent='x' AND rdelete='0' AND hasreplies='0')\nOR \nORDER BY senttime ASC\";\n$query = mysqli_query($dbc, $sql);\n$statusnumrows = mysqli_num_rows($query);\nprint_r($statusnumrows);\n\necho '<div id=\"div1\"></div>';\n\n// Gather data about parent pm's\nif ($statusnumrows > 0) {\n    while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {\n        $pmid = $row[\"id\"];\n        //div naming\n        $pmid2 = 'pm_'.$pmid;\n        $wrap = 'pm_wrap_'.$pmid;\n        //button naming\n        $btid2 = 'bt_'.$pmid;\n        //textarea naming\n        $rt = 'replytext_'.$pmid;\n        //button naming\n        $rb = 'replyBtn_'.$pmid;\n        $receiver = $row[\"receiver\"];\n        $sender = $row[\"sender\"];\n        $subject = $row[\"subject\"];\n        $message = $row[\"message\"];\n        $time = $row[\"senttime\"];\n        $rread = $row[\"rread\"];\n        $sread = $row[\"sread\"];\n        $sdelete = \"\";\n        $rdelete = \"\";\n\n        if ($sender == $_SESSION['user_id']) {\n            $sender = $row[\"receiver\"];\n        }\n\n        $query1 = \"SELECT user_id, username, first_name, last_name, gender, birthdate, city, state, picture FROM mismatch_user WHERE user_id = '\" . $sender . \"'\";\n        $data1 = mysqli_query($dbc, $query1);\n        $row1 = mysqli_fetch_array($data1);\n        $frm = $row1['username'];\n        $frm_id = $row1['user_id'];\n        $profile_pic = $row1['picture'];\n  \n    \n        // Start to build our list of parent pm's\n        $mail .= '<div id=\"'.$wrap.'\" class=\"pm_wrap form-group\">';\n        $mail .= '<div class=\"pm_header form-control\"><a href=\"viewprofile.php?user_id='.$frm_id.'\"><img class=\"friendpics img-circle\" src=\"' . MM_UPLOADPATH . $profile_pic . '\" class=\"img-circle\" alt=\"Profile Picture\" alt=\"'.$frm.'\" title=\"'.$frm.'\"></a><br /><b>Subject: </b>'.$subject.'<br /><br />';\n        // Add button for mark as read\n        $mail .= '<button class=\"btn btn-primary btn-sm\" onclick=\"markRead('.$pmid.','.$sender.')\">Mark As Read</button>';\n\n        $mail .= '<button id=\"hide'. $frm_id .'\" class=\"btn  btn-sm\" style=\"float:right\">Hide</button>\n<button  id=\"show'. $frm_id.'\" class=\"btn btn-primary btn-sm\" style=\"float:right\">Show</button>';\n        // Add Delete button\n        $mail .= '<button class=\"btn btn-warning btn-sm\" id=\"'.$btid2.'\" onclick=\"deletePm('.$pmid.',\\''.$wrap.'\\','.$sender.')\">Delete</button></div>'; ?> \n<!-- JQ for the show/hide messages -->\n        <script type=\"text/javascript\">\n$(document).ready(function(){\n    $(\"#hide<?php echo $frm_id; ?>\").click(function(){\n        $(\"#<?php echo $pmid2; ?>\").hide('slow');\n    });\n    $(\"#show<?php echo $frm_id ?>\").click(function(){\n        $(\"#<?php echo $pmid2; ?>\").show('slow');\n    });\n});\n</script>\n<!-- END JQ for the show hide messages -->\n\n<?php\n\n\n        $mail .= '<div style=\"display:none;\" class=\"msg_bod\" id=\"'.$pmid2.'\">';//start expanding area\n        $mail .= '<div class=\"pm_post\">From: '.$frm.' - '.$time.'<br />'.$message.'</div>';\n        \n        // Gather up any replies to the parent pm's\n        $pm_replies = \"\";\n        $query_replies = mysqli_query($dbc, \"SELECT sender, message, senttime, deletetime FROM pm WHERE parent='$pmid' ORDER BY senttime ASC\");\n        $replynumrows = mysqli_num_rows($query_replies);\n        if ($replynumrows > 0) {\n            while ($row2 = mysqli_fetch_array($query_replies, MYSQLI_ASSOC)) {\n                $rsender = $row2[\"sender\"];\n                $reply = $row2[\"message\"];\n                $time2 = $row2[\"senttime\"];\n                $deletetime = $row2[\"deletetime\"];\n                $mail .= '<div class =\"pm_post \">Your reply: on '.$time2.'....<br />'.$reply.'<br /></div>';\n            }\n        }\n//Message debug unit\n$debug = 1;\n        if ($debug == 1) {\n            echo \"Has replies: $hasreplies<br>\";\n            \n            echo \"Logged in username: $username<br>\";\n            echo \"Logged in viewer_id: $viewer_id<br>\";\n            echo \"receiver: $receiver <br>\";\n            echo \"Sender: $sender <br>\";\n            echo \"viewed_id: $viewed_id<br>\";\n            echo \"sdelete: $sdelete<br>\";\n            echo \"rdelete: $rdelete<br>\";\n            echo \"pm id: $pmid<br>\";\n            echo \"sender: $sender<br>\";\n            echo \"rt: $rt<br>\";\n            echo \"rb: $rb<br>\";\n            echo \"frm: $frm<br>\";\n            echo \"Delete time: $deletetime<br>\";\n            \n            \n//echo \"pm_: $pm_<br>\";\n        }\n        // Each parent and child is now listed\n        $mail .= '</div>';\n        // Add reply textbox\n        $mail .= '<textarea class=\"form-control\" id=\"'.$rt.'\" width=\"100\" placeholder=\"Reply...\"></textarea><br />';\n        // Add reply button\n        \n         $mail .= '<button class=\"form-control btn btn-primary btn-md\" id=\"'.$rb.'\" onclick=\"replyToPm('.$pmid.','.$viewed_id.',\\''.$rt.'\\',\\''.$rb.'\\','.$sender.')\">Reply</button>';\n        $mail .= '</div>';\n        echo \"PM inbox:<br />\";\n    }\n}\n?>\n<?php echo $mail; ?>\n",
+			"file": "pm_inbox.php",
+			"file_size": 6376,
+			"file_write_time": 131292358596797466,
+			"settings":
+			{
+				"buffer_size": 6380,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "php_parsers/pm_system.php",
+			"settings":
+			{
+				"buffer_size": 5723,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "editprofile.php",
+			"settings":
+			{
+				"buffer_size": 19230,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "Package Control: ",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"PHP Code Sniffer: ",
+				"PHP Code Sniffer: Sniff this file"
+			],
+			[
+				"Snippet: ",
+				"Snippet: html"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"Package Control: e",
+				"Package Control: Enable Package"
+			],
+			[
+				"",
+				"Snippet: <?php $this->… ?>"
+			]
+		],
+		"width": 512.0
+	},
+	"console":
+	{
+		"height": 83.0,
+		"history":
+		[
+			"fuck",
+			"CR",
+			"y",
+			"8",
+			"php-cs-fixer.phar self-update",
+			"sublimelinter"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/users/trev/appdata/local/temp/sublime-sftp-browse-1484607121/server/var/www/html/meet-app/viewprofile.php",
+		"/C/xampp/htdocs/meet-app/notifications.php",
+		"/C/xampp/htdocs/meet-app/style.css",
+		"/C/users/trev/appdata/local/temp/sublime-sftp-browse-1484607021/server/var/www/html/meet-app/header.php",
+		"/C/xampp/htdocs/meet-app/pm.sql",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/euphoria/template-parts/content-news.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-includes/post-template.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/euphoria/footer.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/euphoria/template-parts/content.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/euphoria/index.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/euphoria/functions.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/euphoria/single.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/euphoria/header.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/euphoria/style.css",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/euphoria/template-parts/content-none.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/euphoria/template-parts/content-page.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/euphoria/slider.php",
+		"/C/xampp/htdocs/wordpress/wp-content/themes/omega/header.php",
+		"/C/xampp/htdocs/wordpress/wp-content/themes/omega/index.php",
+		"/C/xampp/htdocs/wordpress/wp-content/themes/omega/slider.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/euphoria/template-sample.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-includes/kses.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/euphoria/page.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/euphoria/sidebar.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-admin/css/colors/blue/colors.css",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-includes/author-template.php",
+		"/C/xampp/htdocs/wordpress/style.css",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-blog-header.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/euphoria/style1.css",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/twentyfifteen/header.php",
+		"/C/xampp/htdocs/wordpress/wp-blog-header.php",
+		"/C/Users/Trev/.homestead/Homestead.yaml",
+		"/C/Users/Trev/AppData/Roaming/Sublime Text 3/Packages/User/phpcs.sublime-settings",
+		"/C/Users/Trev/Code/proj1/config/app.php",
+		"/C/xampp/htdocs/meet-app/friendlist.php",
+		"/C/Users/Trev/AppData/Local/Temp/fz3temp-3/wp-mail.php",
+		"/C/xampp/htdocs/meet-app/viewprofile.php",
+		"/C/xampp/htdocs/meet-app/test.php",
+		"/C/xampp/htdocs/meet-app/new_marketplace.php",
+		"/C/xampp/htdocs/meet-app/pm_inbox.php",
+		"/C/xampp/htdocs/meet-app/php_functions.php",
+		"/C/Users/Trev/Desktop/tutorial/tutorial.html",
+		"/C/xampp/htdocs/meet-app/template_pm.php",
+		"/C/xampp/htdocs/lesson/viewprofile.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-config.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/euphoria/euphoria/index.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/euphoria/euphoria/archive.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/euphoria/euphoria/category-5.php",
+		"/C/xampp/htdocs/lesson/test.php",
+		"/C/Users/Trev/Desktop/tutorial/style.css",
+		"/C/Users/Trev/Desktop/tutorial/tutorial1.html",
+		"/C/Users/Trev/AppData/Roaming/Sublime Text 3/Packages/User/sftp_servers/server",
+		"/C/users/trev/appdata/local/temp/sublime-sftp-browse-1483917284/server/var/www/html/award.php",
+		"/C/users/trev/appdata/local/temp/sublime-sftp-browse-1483917587/server/var/www/html/dinosophy/wordpress/.htaccess",
+		"/C/Users/Trev/AppData/Local/Temp/fz3temp-3/wp-config.php",
+		"/C/Users/Trev/AppData/Roaming/Sublime Text 3/Packages/Phpcs/phpcs.sublime-settings",
+		"/C/Users/Trev/AppData/Roaming/Sublime Text 3/Packages/PHP_CodeSniffer/PHP_CodeSniffer.sublime-settings",
+		"/C/xampp/php/pear/PHP/CodeSniffer/Fixer.php",
+		"/C/Users/Trev/AppData/Roaming/Sublime Text 3/Packages/Phpcs/Default (Windows).sublime-keymap",
+		"/C/Users/Trev/Code/proj1/phpunit.xml",
+		"/C/xampp/htdocs/meet-app/block_add.php",
+		"/C/Users/Trev/Code/proj1/server.php",
+		"/C/Users/Trev/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/C/Users/Trev/AppData/Roaming/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/C/Users/Trev/Code/Vagrantfile",
+		"/C/Users/Trev/Code/Homestead/Vagrantfile",
+		"/C/Users/Trev/Code/proj1/public/index.php",
+		"/C/Users/Trev/Documents/web extra/Homestead.yaml",
+		"/C/xampp/htdocs/meet-app/js/main.js",
+		"/C/xampp/htdocs/meet-app/js/ajax.js",
+		"/C/xampp/htdocs/meet-app/php_parsers/pm_system.php",
+		"/C/xampp/htdocs/meet-app/header.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-links-opml.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/rara-academic/index.php",
+		"/C/htdocs/wordpress/wp-includes/post-template.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-includes/class.wp-styles.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/plugins/insert-php/authorize.php",
+		"/C/xampp/htdocs/meet-app/navmenu.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-settings.php",
+		"/C/Users/Trev/Downloads/dinosophy.sql",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/rara-academic/page.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/rara-academic/single.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/rara-academic/template-home.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/rara-academic/sections/blog.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/rara-academic/sections/welcome.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/rara-academic/template-parts/content.php",
+		"/C/Users/Trev/composer-setup.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/plugins/insert-php/addemail.php",
+		"/C/Users/Trev/Homestead/vendor/laravel/framework/src/Illuminate/Events/CallQueuedHandler.php",
+		"/C/Users/Trev/Homestead/vendor/laravel/framework/src/Illuminate/Mail/Mailer.php",
+		"/C/Users/Trev/blog/server.php",
+		"/C/Users/Trev/Vagrantfile",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/rara-academic/template-parts/content-page.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/rara-academic/template-parts/content-none.php",
+		"/C/xampp/htdocs/blog/app/User.php",
+		"/C/Users/Trev/.ssh/id_rsa",
+		"/C/Users/Trev/.vagrant.d/insecure_private_key",
+		"/C/xampp/htdocs/blog/public/index.php",
+		"/C/Users/Trev/blog/bootstrap/cache/services.php",
+		"/C/Users/Trev/blog/bootstrap/autoload.php",
+		"/C/Users/Trev/Homestead/vendor/autoload.php",
+		"/C/Users/Trev/Code/test",
+		"/C/Users/Trev/blog/bootstrap/app.php",
+		"/C/Users/Trev/.homestead/aliases",
+		"/C/Users/Trev/Homestead/homestead",
+		"/C/homestead/Homestead/composer.json",
+		"/C/homestead/Homestead/src/stubs/Homestead.yaml",
+		"/C/Users/Trev/.vagrant.d/boxes/laravel-VAGRANTSLASH-homestead/1.0.1/virtualbox/Vagrantfile",
+		"/C/xampp/htdocs/myweb/completed/elvis/removeemail.php",
+		"/C/xampp/htdocs/myweb/completed/elvis/addemail.php",
+		"/C/xampp/htdocs/dinosophy/wordpress/wp-content/themes/rara-academic/header.php",
+		"/C/xampp/htdocs/myweb/completed/guitarwarsch05/authorize.php",
+		"/C/Users/Trev/AppData/Local/Temp/fz3temp-2/wp-config.php",
+		"/C/Users/Trev/Downloads/mismatchdb.sql",
+		"/C/xampp/htdocs/meet-app/php_parsers/friend_system.php",
+		"/C/xampp/htdocs/myweb/award.php",
+		"/C/xampp/htdocs/meet-app/php_parsers/pm_inbox.php",
+		"/C/xampp/htdocs/meet-app/best_match.php",
+		"/C/Users/Trev/Documents/web extra/New folder (2)/fbChatSource/public/ajax/add_msg.php",
+		"/C/xampp/htdocs/meet-app/mymismatch.php",
+		"/C/Users/Trev/Documents/web extra/New folder (2)/fbChatSource/core/FbChatMock.php",
+		"/C/xampp/htdocs/meet-app/pm_system.php",
+		"/C/xampp/htdocs/wordpress/wp-admin/admin.php",
+		"/C/xampp/htdocs/meet-app/php_parsers/user.php",
+		"/C/xampp/htdocs/meet-app/php_parsers/block_system.php",
+		"/C/xampp/htdocs/myweb/header1.1.php",
+		"/C/xampp/htdocs/meet-app/index.php",
+		"/C/xampp/htdocs/meet-app/viewfriendrequests.php"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"INSERT INTO",
+			"WHERE",
+			"INSERT INTO",
+			"now",
+			"msg_",
+			"shake",
+			"<script",
+			"margin",
+			"body",
+			".body",
+			"_",
+			".title",
+			".comment-respond",
+			"-->",
+			">",
+			"-->",
+			"__>",
+			".logo",
+			"img",
+			".img",
+			"image",
+			"thumbnail",
+			"image",
+			"images",
+			".navbar-r",
+			".nav",
+			".navbar-ri",
+			"float",
+			"ul",
+			"container_",
+			"h1",
+			"title",
+			"content-area",
+			"entry",
+			"list-style",
+			"ul",
+			"post-categories",
+			"post-categorie",
+			"four",
+			"body",
+			"site-content",
+			"body",
+			"masthead",
+			"esti",
+			"$age",
+			"php-cs-fixer",
+			"phpcs_fixer_run",
+			"phpcs_sniffer_run",
+			"php-cs-fixer.phar",
+			"phpcbf_executable_path",
+			"php_cs_fixer_executable_path",
+			"phpcs_executable_path",
+			"permalink",
+			"1234",
+			"dzlinks",
+			"debug",
+			"\"pm_\"",
+			"pm_",
+			"ta",
+			"debug",
+			"ta",
+			"wrapperid",
+			"wrap",
+			"wrapper",
+			"wrapperid",
+			" \n",
+			"wrapperid",
+			"style",
+			"<div",
+			"template_pm.php",
+			"$own",
+			"$condate",
+			"birthate",
+			"hr",
+			"disa",
+			"disabled",
+			"wrapperid",
+			"Reply",
+			"reply",
+			"template_pm.php",
+			"$log_username",
+			"$db_conx",
+			"h4",
+			"match",
+			"    \nbreakdown",
+			"    \n",
+			"friendlist.php",
+			"runs",
+			"require_once",
+			"  \n",
+			"echo",
+			"print_r",
+			"print_",
+			"print",
+			"UPDATE",
+			"($_POST['reqid'])",
+			"\"accept\"",
+			"if($_POST['action'] == \"accept\"){",
+			"if post action",
+			"accept",
+			"does",
+			"tr",
+			"try agai",
+			"does",
+			"try again later",
+			"notification",
+			"UPDATE",
+			"try",
+			"try again later",
+			");\n",
+			".css",
+			"print",
+			"nopic.jpg",
+			"nopic",
+			"picture",
+			"does not",
+			"requested to friend with you first",
+			"press",
+			"$u",
+			"INSERT",
+			"isOwner",
+			"$log_username",
+			"unfriend_ok",
+			"elem",
+			"mismatch_user_id",
+			"button",
+			"edit",
+			"function"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 7,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "viewprofile.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14732,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								313,
+								313
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 240.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 900,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								900
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 816.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "header.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1131,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "navmenu.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2556,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2553,
+								2553
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 603.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/users/trev/appdata/local/temp/sublime-sftp-browse-1484607369/server/var/www/html/meet-app/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 900,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								900,
+								900
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"is_remote": true,
+							"remote_loading": false,
+							"synced": true,
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"tmp_dir": "c:\\users\\trev\\appdata\\local\\temp\\sublime-sftp-browse-1484607369\\server\\",
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 420.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "pm_inbox.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6380,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1513,
+								1513
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 480.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "php_parsers/pm_system.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5723,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2034,
+								2050
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "editprofile.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 19230,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 320.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 73.0
+	},
+	"pinned_build_system": "",
+	"project": "viewprofile.sublime-project",
+	"replace":
+	{
+		"height": 56.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 153.0,
+	"status_bar_visible": false,
+	"template_settings":
+	{
+	}
+}

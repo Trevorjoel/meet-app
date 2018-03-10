@@ -1,5 +1,13 @@
 # meet-app
+
+This is a 'practice' social media application built with PHP.
+I threw it together using various tutorials.
+Written before I had a decent understanding of functions and OOP.
+Project is incomplete and probably remain so while I shift my focus to JS, node and React stack.
+You are welcome to look through, critique my work and check the bugs listed below.
+
 Bugs with meet app
+
 http://alternicom.com/meet-app/
 You can login debug  with these users: 
 
@@ -8,18 +16,6 @@ password: user1
 Username: user2
 Password: user2
 
-// TO: TWISTEDWEB 123 //
-
-Hi mate, I'm an amateur web dev, been at it 1 year.
-I'm putting together a portfolio and including various projects in it. 
-Basically I have a few projects incomplete/messy and the closing date for an application for a trainee position is 21 th Feb.
-Need help.
-
-The project I would like you to tidy is a simple social-media app that I have thrown together from various tutorials without a framework. My approach has been get it to run and move to the next challenge so this is one of a few, incomplete/ugly projects.
-
-What you might be looking out for and fixing would be variables declared multiple times, input validation and other simple security issues. The possibility of applying simple functions  for some repetitive tasks and anything in PHP and ajax (I'm really not good at JS/AJAX) The delete button is not working on the server but ok with XAMPP localhost I think its an AJAX function. 
-
-What I don't want you to do is mis-represent my abilities, rewrite or go much further on developing the app for me(The app is right at the edge of my abilities I would get it done but the time is the factor). Just want to tidy it up as it is. I will style it with bootstrap.
 
 
 PHP/SQL/Db
@@ -59,4 +55,4 @@ Recreate error (not an error, need to create function):
 Sign in, find a user you have not messaged send message.
 4)Mark as read does not remove the Message notification (blue speech bubble) asynchronously from the header. Header.php file
 
-Tell me what you think what you might charge. I can be more specific about particular problems, but you get the idea? 
+Thanks
